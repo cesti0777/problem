@@ -1,0 +1,11 @@
+package problem.cal;
+
+import java.util.Scanner;
+
+public class p2558 {
+	Scanner in = new Scanner(System.in);
+	int a = Integer.parseInt(in.nextLine());
+	int b = Integer.parseInt(in.nextLine());
+	
+	System.out.println(a+b);
+}

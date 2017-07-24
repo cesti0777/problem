@@ -1,0 +1,44 @@
+package problem.cal;
+
+import java.util.Scanner;
+
+public class p2839 {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		try{
+			int n = in.nextInt();
+			int cnt = 0;
+			int add5 = 0;
+			
+			if(n%5 != 0){
+				cnt = n/5;
+				n = n%5;
+				if(n%3 != 0){
+					while(1){
+						
+					}
+					if((n+5)%3 == 0){
+						cnt = (cnt-1) + (n+5)/3;
+					}else{
+						if((n+10)%3 == 0){
+							cnt = (cnt-1) + (n+5)/3;
+						}else{
+							if((n+15)%3 == 0){
+								cnt = (cnt-1) + (n+5)/3;
+							}
+						}
+					}
+				}else{
+					cnt += n/3;
+				}
+			}else{
+				cnt = n/5;
+			}
+			System.out.println(cnt);
+		}finally {
+			in.close();
+			in = null;
+		}
+	}
+}
