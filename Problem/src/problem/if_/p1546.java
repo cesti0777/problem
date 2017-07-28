@@ -8,19 +8,22 @@ public class p1546 {
 		Scanner in = new Scanner(System.in);
 		
 		try{
-			float n = in.nextInt();
-			float a = in.nextInt();
-			float b = in.nextInt();
-			float c = in.nextInt();
-			float m = Math.max(c, Math.max(a, b));
-			float result = 0;
-			
-			a = a/m*100;
-			b = b/m*100;
-			c = c/m*100;
-			
-			System.out.println(String.format("%.2f" , (a+b+c)/3));
-			
+			int n = in.nextInt();
+			int[] score = new int[n];
+			for(int i = 0; i < n; i++){
+				score[i] = in.nextInt();
+			}
+			int max = score[0];
+			for(int i = 1; i < n; i++){
+				if(max < score[i]){
+					max = score[i];
+				}
+			}
+			float sum = 0;
+			for(int i = 0; i < n; i++){
+				sum += (float)score[i]/(float)max*100;
+			}
+			System.out.println(String.format("%.2f" , sum/(float)n));
 		}finally {
 			in.close();
 			in = null;
