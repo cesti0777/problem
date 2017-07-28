@@ -1,62 +1,32 @@
 package problem.fun;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 
 public class p4673 {
 	
 	public static void makeSelfNum(ArrayList<Integer> arrList){
-		Iterator<Integer> it = arrList.iterator();
-		int n = 0;
 		
-		while(it.hasNext()){
-			n = it.next();
+		int nn = 0;
+		
+		for(int n = 1; n<=10000 ; n++){
 			if(n <10){
-				n = n+n;
+				nn = n+n;
 			}else if(n < 100){
-				n = n+n/10+n%10;
+				nn = n+n/10+n%10;
 			}else if(n < 1000){
-				n = n+n/100+(n/10)%10+n%10;
+				nn = n+n/100+(n/10)%10+n%10;
 			}else if(n < 10000){
-				n = n+n/1000+(n/100)%10+(n/10)%10+n%10;
+				nn = n+n/1000+(n/100)%10+(n/10)%10+n%10;
 			}else if(n == 10000){
 				break;
 			}
-			if(arrList.contains(n)){
-				arrList.remove(arrList.indexOf(n));
+			if(arrList.contains(nn)){
+				arrList.remove(arrList.indexOf(nn));
 			}
 		}
-		
-//		while(it.hasNext()){
-//			System.out.println(it.next());
-//		}
-//		for(Integer v : hs){
-//			v+3;
-//			System.out.println(v+3);
-//			
-//			if(n <10){
-//				n = n+n;
-//			}else if(n < 100){
-//				n = n+n/10+n%10;
-//			}
-//			else if(n < 1000){
-//				n = n+n/100+(n/10)%10+n%10;
-//			}
-//			else if(n < 10000){
-//				n = n+n/1000+(n/100)%10+(n/10)&10+n%10;
-//			}
-//			else if(n == 10000){
-//				break;
-//			}else{
-//				
-//			}
-//			hs.remove(n);
-//		}
-//		
-//		for(Integer n : hs){
-//			System.out.println(n);
-//		}
+		for(Integer v : arrList){
+			System.out.println(v);
+		}
 	}
 	
 	public static void main(String[] args) {
