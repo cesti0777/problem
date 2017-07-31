@@ -1,0 +1,10 @@
+package problem.dfsbfs;
+
+public class BagicBFS {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
