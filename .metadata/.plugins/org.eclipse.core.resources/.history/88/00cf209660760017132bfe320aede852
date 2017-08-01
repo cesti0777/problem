@@ -53,9 +53,7 @@ public class p1260 {
 				int u = in.nextInt();
 				int v = in.nextInt();
 				edgeDFS[u][v] = true;
-				edgeDFS[v][u] = true;
 				edgeBFS[u][v] = true;
-				edgeBFS[v][u] = true;
 			}
 			dfs(startV);
 			System.out.println();

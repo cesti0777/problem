@@ -45,17 +45,15 @@ public class p1260 {
 			n = in.nextInt();
 			m = in.nextInt();
 			startV = in.nextInt();
-			edgeDFS = new boolean[2*n + 1][2*n + 1];
+			edgeDFS = new boolean[n + 1][n + 1];
 			visitedDFS = new boolean[n + 1];
-			edgeBFS = new boolean[2*n + 1][2*n + 1];
+			edgeBFS = new boolean[n + 1][n + 1];
 			visitedBFS = new boolean[n + 1];
 			for (int i = 0; i < m; i++) {
 				int u = in.nextInt();
 				int v = in.nextInt();
 				edgeDFS[u][v] = true;
-				edgeDFS[v][u] = true;
 				edgeBFS[u][v] = true;
-				edgeBFS[v][u] = true;
 			}
 			dfs(startV);
 			System.out.println();
