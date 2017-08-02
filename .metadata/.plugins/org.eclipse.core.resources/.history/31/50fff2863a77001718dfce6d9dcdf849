@@ -1,0 +1,24 @@
+package problem.dfsbfs;
+
+import java.util.Scanner;
+
+public class ex {
+	static int n, m, startV;
+	static boolean edge;
+	static boolean visited;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		try{
+			n = in.nextInt();
+			m = in.nextInt();
+			startV = in.nextInt()
+			edge = new boolean[n+1][n+1];
+			visited = new boolean[n+1];
+		}finally {
+			in.close();
+			in = null;
+		}
+	}
+
+}

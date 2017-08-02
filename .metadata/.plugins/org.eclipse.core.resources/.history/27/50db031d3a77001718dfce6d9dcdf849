@@ -1,0 +1,13 @@
+package problem.dfsbfs;
+
+public class ex {
+	static boolean edge;
+	static boolean visited;
+	static int u, v, startV;
+	
+
+	public static void main(String[] args) {
+
+	}
+
+}
