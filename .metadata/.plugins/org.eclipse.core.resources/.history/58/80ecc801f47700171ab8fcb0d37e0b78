@@ -32,7 +32,7 @@ public class P11403 {
 			for (int i = 1; i <= n; i++) {
 				dfs(i);
 				for (int j = 1; j <= n; j++) {
-					if (visited[j] == true) {
+					if(visited[j] == true){
 						ans[i][j] = 1;
 						visited[j] = false;
 					}
@@ -40,16 +40,9 @@ public class P11403 {
 			}
 			for (int i = 1; i <= n; i++) {
 				for (int j = 1; j <= n; j++) {
-					System.out.print(ans[i][j] + " ");
+					System.out.print(ans[i][j]+" ");
 				}
-				System.out.println();
-			}
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < n; j++) {
-					System.out.print(ans[i][j]);
-					System.out.print(" ");
-				}
-				System.out.println("");
+				System.out.println(" ");
 			}
 		} finally {
 			in.close();
