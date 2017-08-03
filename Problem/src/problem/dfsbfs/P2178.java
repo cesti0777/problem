@@ -3,80 +3,53 @@ package problem.dfsbfs;
 import java.util.Scanner;
 
 public class P2178 {
-	static int n, m, nodeCnt = 0;
-	static boolean[][] map;
-	static boolean[][][][] edge;
-	static boolean[][] visited;
-	static Scanner in = new Scanner(System.in);
+	static int n, m, distance;
+	static int[][] map;
 
-	public static void makeEdge(int x, int y) {
-		visited[x][y] = true;
-		if (x == n && y == m){
-			return;
+	public static void dfs(int curX, int curY, int length) {
+		map[curY][curX] = 0; // 지나온길은 으로
+		if (curY == n && curX == m) { // 최종점이면
+			if (length < distance) {
+				distance = length;
+				System.out.println(distance);
+				return;
+			}
 		}
-			
-		if (x + 1 <= n && y <= m && (map[x + 1][y] || !visited[x + 1][y])) {// 하
-			edge[x][y][x + 1][y] = true;
-			makeEdge(x + 1, y);
+		if (curX <= m && map[curY][curX + 1] == 1) { // 오른쪽
+			dfs(curX + 1, curY, length + 1);
 		}
-		if (x <= n && y + 1 <= m && (map[x][y + 1] || !visited[x][y + 1])) {// 우
-			edge[x][y][x][y + 1] = true;
-			makeEdge(x, y + 1);
+		if (curY <= n && map[curY + 1][curX] == 1) { // 아래
+			dfs(curX, curY + 1, length + 1);
 		}
-		if (x - 1 <= n && y <= m && (map[x - 1][y] || !visited[x - 1][y])) {// 상
-			edge[x][y][x - 1][y] = true;
-			makeEdge(x - 1, y);
+		if (curY >= 1 && map[curY - 1][curX] == 1) { // 위
+			dfs(curX, curY - 1, length + 1);
 		}
-		if (x <= n && y - 1 <= m && (map[x][y - 1] || !visited[x][y - 1])) {// 좌
-			edge[x][y][x][y - 1] = true;
-			makeEdge(x, y - 1);
+		if (curX >= 1 && map[curY][curX - 1] == 1) { // 왼쪽
+			dfs(curX - 1, curY, length + 1);
 		}
 	}
 
 	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
 		try {
 			n = in.nextInt();
 			m = in.nextInt();
-			map = new boolean[n + 1][m + 1];
-			visited = new boolean[n + 1][m + 1];
-			edge = new boolean[n + 1][m + 1][n + 1][m + 1];
+			distance = n * m;
+			map = new int[n + 2][m + 2];
+			// 맵 입력
 			in.nextLine();
 			for (int i = 1; i <= n; i++) {
 				String line = in.nextLine();
 				for (int j = 1; j <= m; j++) {
-					if (line.charAt(j - 1) == '1') {
-						map[i][j] = true;
-						nodeCnt++;
-					}
+					map[i][j] = Character.getNumericValue(line.charAt(j - 1));
 				}
 			}
-			// for(int i = 1 ; i <= n; i++){
-			// for(int j = 1 ; j <= m; j++){
-			// if(map[i][j]){
-			// System.out.print(1);
-			// }else{
-			// System.out.print(0);
-			// }
-			// }
-			// System.out.println();
-			// }
-			makeEdge(1, 1);
-			for (int i = 1; i <= n; i++) {
-				for (int j = 1; j <= m; j++) {
-					if (visited[i][j]) {
-						System.out.print(1);
-					} else {
-						System.out.print(0);
-					}
-				}
-				System.out.println();
-			}
+			dfs(1, 1, 1);
 		} finally {
 			in.close();
 			in = null;
 		}
 	}
-
 }
 
 // 예제 입력 복사
@@ -88,10 +61,10 @@ public class P2178 {
 // 예제 출력 복사
 // 15
 // 예제 입력 2 복사
-// 4 6
-// 110110
-// 110110
-// 111111
-// 111101
+/*4 6
+110110
+110110
+111111
+111101*/
 // 예제 출력 2 복사
 // 9

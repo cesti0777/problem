@@ -1,0 +1,58 @@
+package problem.dfsbfs;
+
+import java.util.Scanner;
+
+public class P2178 {
+	static int n, m, min;
+	static int[][] map;
+	static boolean[][] visited;
+	static boolean[][][][] edge;
+
+	public static void dfs(int curX, int curY, int min) {
+		visited[curX][curY] = true;
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		try {
+			n = in.nextInt();
+			m = in.nextInt();
+			min = n * m;
+			map = new int[n + 1][m + 1];
+			visited = new boolean[n + 1][m + 1];
+			edge = new boolean[n + 1][m + 1][n + 1][m + 1];
+			// 맵 입력
+			in.nextLine();
+			for (int i = 1; i <= n; i++) {
+				String line = in.nextLine();
+				for (int j = 1; j <= m; j++) {
+					map[i][j] = Character.getNumericValue(line.charAt(j - 1));
+				}
+			}
+
+			dfs(1, 1, min);
+
+		} finally {
+			in.close();
+			in = null;
+		}
+	}
+
+}
+
+// 예제 입력 복사
+// 4 6
+// 101111
+// 101010
+// 101011
+// 111011
+// 예제 출력 복사
+// 15
+// 예제 입력 2 복사
+// 4 6
+// 110110
+// 110110
+// 111111
+// 111101
+// 예제 출력 2 복사
+// 9
