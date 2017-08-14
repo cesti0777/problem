@@ -1,0 +1,70 @@
+package problem.dfsbfs;
+
+import java.util.Scanner;
+
+public class P2178 {
+	static int n, m, distance;
+	
+	static int distances;
+
+	public static void bfs(int curX, int curY, int length, int[][] map) {
+		map[curY][curX] = 0; // 지나온길은 0으로
+		if (curY == n && curX == m) { // 최종점이면
+			if (length < distance) {
+				distance = length;
+			}
+		}
+		if (curX + 1 <= m && map[curY][curX + 1] == 1) { // 오른쪽
+			bfs(curX + 1, curY, length + 1, map);
+		}
+		if (curY + 1 <= n && map[curY + 1][curX] == 1) { // 아래
+			bfs(curX, curY + 1, length + 1, map);
+		}
+		if (curY - 1 >= 1 && map[curY - 1][curX] == 1) { // 위
+			bfs(curX, curY - 1, length + 1, map);
+		}
+		if (curX - 1 >= 1 && map[curY][curX - 1] == 1) { // 왼쪽
+			bfs(curX - 1, curY, length + 1, map);
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		try {
+			n = in.nextInt();
+			m = in.nextInt();
+			distance = n * m;
+			int[][] map = new int[n + 2][m + 2];
+			// 맵 입력
+			in.nextLine();
+			for (int i = 1; i <= n; i++) {
+				String line = in.nextLine();
+				for (int j = 1; j <= m; j++) {
+					map[i][j] = Character.getNumericValue(line.charAt(j - 1));
+				}
+			}
+			bfs(1, 1, 1, map);
+			System.out.println(distance);
+		} finally {
+			in.close();
+			in = null;
+		}
+	}
+}
+
+// 예제 입력 복사
+//4 6
+//101111
+//101010
+//101011
+//111011
+// 예제 출력 복사
+// 15
+// 예제 입력 2 복사
+//4 6
+//110110
+//110110
+//111111
+//111101
+// 예제 출력 2 복사
+// 9
