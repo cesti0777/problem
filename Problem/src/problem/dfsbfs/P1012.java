@@ -4,10 +4,28 @@ public class P1012 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		int[] arr = {4,1,3};
+		System.out.println(solution(arr));
 	}
-
+	public static boolean solution(int[] arr) {
+	    boolean answer = true;
+	    int cnt = arr.length;
+	    int[] cntArr = new int[cnt];
+	    for(int i = 0; i < cnt ; i++){
+	        cntArr[arr[i]-1]++;
+	    }
+	    for(int i = 0; i < cnt ; i++){
+	        if(cntArr[i] > 1){
+	            answer = false;
+	            break;
+	        }
+	    }
+	    return answer;
+	}
 }
+
+
 //문제
 //차세대 영농인 한나는 강원도 고랭지에서 유기농 배추를 재배하기로 하였다. 
 //농약을 쓰지 않고 배추를 재배하려면 배추를 해충으로부터 보호하는 것이 중요하기 때문에, 
