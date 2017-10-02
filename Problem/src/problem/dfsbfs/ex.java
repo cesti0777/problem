@@ -3,16 +3,16 @@ package problem.dfsbfs;
 import java.util.Scanner;
 
 public class ex {
-
-	static boolean edge[][];
-	static boolean visited[];
 	static int n, m, startV;
+	static boolean[][] edge;
+	static boolean[] visited;
+
 
 	public static void dfs(int cur) {
 		visited[cur] = true;
 		System.out.print(cur + " ");
-		for(int i = 1; i <= n; i++){
-			if(visited[i] || !edge[cur][i]){
+		for (int i = 1; i <= n; i++) {
+			if (visited[i] || !edge[cur][i]) {
 				continue;
 			}
 			dfs(i);
@@ -40,9 +40,33 @@ public class ex {
 	}
 
 }
+
+/*4 6
+110110
+110110
+111111
+111101*/
+
+
+
+
+//5 5
+//11111
+//00001
+//11111
+//10100
+//11111
+
 // 4 5 1
 // 1 2
 // 1 3
 // 1 4
 // 2 4
 // 3 4
+
+
+//4 6
+//110110
+//110110
+//111111
+//111101

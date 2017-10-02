@@ -1,0 +1,101 @@
+package problem.dfsbfs;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class P2178 {
+	static int n, m, distance;
+	static int distances;
+	static boolean[][] visited;
+	static Queue<int[]> q;
+	static int[] position;
+	public static void bfs(int curX, int curY, int length, int[][] map) {
+		visited[curX][curY] = true;
+		int[] curInfo = {curX, curY, length};
+		q.add(curInfo);
+		while (!q.isEmpty()) {
+			int[] here = q.remove();
+			curX = here[0];
+			curY = here[1];
+			length = here[2];
+			
+			if (curY == n && curX == m) { 
+				if(length < distance){
+					distance = length;
+				}
+			}
+		
+			if (curX + 1 <= m && !visited[curY][curX + 1] && map[curY][curX + 1] == 1){
+				visited[curY][curX + 1] = true;
+				curInfo[0] = curX + 1;
+				curInfo[1] = curY;
+				length = length + 1;
+				q.add(curInfo);
+			}
+			
+			if (curY - 1 >= 1 && !visited[curY - 1][curX] && map[curY - 1][curX] == 1){
+				visited[curY - 1][curX] = true;
+				curInfo[0] = curX;
+				curInfo[1] = curY - 1;
+				length = length + 1;
+				q.add(curInfo);
+			}
+			if (curX - 1 >= 1 && !visited[curY][curX - 1] && map[curY][curX - 1] == 1){
+				visited[curY][curX - 1] = true;
+				curInfo[0] = curX - 1;
+				curInfo[1] = curY;
+				length = length + 1;
+				q.add(curInfo);
+			}
+			if (curY + 1 <= n && !visited[curY + 1][curX] && map[curY + 1][curX] == 1){
+				visited[curY + 1][curX] = true;
+				curInfo[0] = curX;
+				curInfo[1] = curY + 1;
+				length = length + 1;
+				q.add(curInfo);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		try {
+			n = in.nextInt();
+			m = in.nextInt();
+			distance = n * m;
+			int[][] map = new int[n + 1][m + 1];
+			visited = new boolean[n + 1][m + 1];
+			q = new LinkedList<>();
+			in.nextLine();
+			for (int i = 1; i <= n; i++) {
+				String line = in.nextLine();
+				for (int j = 1; j <= m; j++) {
+					map[i][j] = Character.getNumericValue(line.charAt(j - 1));
+				}
+			}
+			bfs(1, 1, 1, map);
+			System.out.println(distance);
+		} finally {
+			in.close();
+			in = null;
+		}
+	}
+}
+
+// 예제 입력 복사
+//4 6
+//101111
+//101010
+//101011
+//111011
+// 예제 출력 복사
+// 15
+// 예제 입력 2 복사
+//4 6
+//110110
+//110110
+//111111
+//111101
+// 예제 출력 2 복사
+// 9
