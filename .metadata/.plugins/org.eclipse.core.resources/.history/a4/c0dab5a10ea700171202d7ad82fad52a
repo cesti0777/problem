@@ -1,0 +1,21 @@
+package midas.test;
+
+import java.util.Scanner;
+
+public class Main {
+	static int n = 0;
+	static int m = 0;
+	static char[] alpa = new char[27];
+	
+	public static void main(String[] args) {
+//		Scanner in = new Scanner(System.in);
+//		
+//		n = in.nextInt();
+//		m = in.nextInt();
+		
+		System.out.println((int)'A');
+		
+		
+	}
+
+}

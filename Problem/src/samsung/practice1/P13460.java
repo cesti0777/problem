@@ -93,15 +93,15 @@ public class P13460 {
 
 					//R 상방향으로 갈 수 있는 끝지점으로 이동
 					
-					while(true){
-						tmp++;
-						if(map[curYR-tmp][curXR] != '#'){
-							continue;
-						}else{
-							
-						}
-						
-					}
+//					while(true){
+//						tmp++;
+//						if(map[curYR-tmp][curXR] != '#'){
+//							continue;
+//						}else{
+//							
+//						}
+//						
+//					}
 				} else {// B가 위에 있으면
 					//B 상방향으로 갈 수 있는 끝지점으로 이동
 				}
