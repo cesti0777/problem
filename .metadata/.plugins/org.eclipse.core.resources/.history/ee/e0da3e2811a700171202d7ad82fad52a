@@ -1,0 +1,30 @@
+package midas.test;
+
+import java.util.Scanner;
+
+public class Main {
+	static int n = 0;
+	static int m = 0;
+	static char[][] pair = new char[101][3];
+	static char[] alpa = new char[27];
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		n = in.nextInt();
+		m = in.nextInt();
+		in.nextLine();
+		//순서쌍 입력
+		for(int i = 1; i <= m; i++){
+			String line = in.nextLine();
+			pair[i][1] = line.charAt(0);
+			pair[i][2] = line.charAt(2);
+			System.out.println(pair[i][1]+" "+pair[i][2]);
+		}
+		//n개 알파벳 입력
+		for(int i = 1; i <= n; i++){
+			alpa[i] = (char)(64 + i);
+//			System.out.print((char)(64 + i));
+		}
+	}
+}

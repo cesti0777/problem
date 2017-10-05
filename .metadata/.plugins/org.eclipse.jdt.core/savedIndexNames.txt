@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 INDEX VERSION 1.130+D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.jdt.core
 3606533314.index
+=======
+INDEX VERSION 1.130+D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.jdt.core
+>>>>>>> 5acbfbd7261d64a9f8c7826ce14b1336a4bb1963
 2033839043.index
 1312586118.index
 3075621779.index

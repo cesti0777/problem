@@ -7,6 +7,7 @@ public class ex {
 	static boolean[][] edge;
 	static boolean[] visited;
 
+
 	public static void dfs(int cur) {
 		visited[cur] = true;
 		System.out.print(cur + " ");
