@@ -1,0 +1,680 @@
+package samsung.practice1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class P13460 {
+	static char[][] map = new char[101][101];
+	static boolean visited[][][][] = new boolean[11][11][11][11];
+	static int n = 0;
+	static int m = 0;
+	static int[] locationR = new int[2];
+	static int[] locationB = new int[2];
+	static int[] locationO = new int[2];
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		n = in.nextInt();
+		m = in.nextInt();
+		in.nextLine();
+
+		// map 입력
+		for (int i = 1; i <= n; i++) {
+			String line = in.nextLine();
+			for (int j = 1; j <= m; j++) {
+				map[i][j] = line.charAt(j - 1);
+			}
+		}
+
+		// R,B,O 초기 좌표 저장
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= m; j++) {
+				if (map[i][j] == 'R') {
+					locationR[0] = j;
+					locationR[1] = i;
+				} else if (map[i][j] == 'B') {
+					locationB[0] = j;
+					locationB[1] = i;
+				} else if (map[i][j] == 'O') {
+					locationO[0] = j;
+					locationO[1] = i;
+				}
+			}
+		}
+
+		bfs(locationR[0], locationR[1], locationB[0], locationB[1], 0);
+
+	}
+
+	static void printMap(){
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= m; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
+	static void bfs(int curXR, int curYR, int curXB, int curYB, int cnt) {
+		Queue<Integer> q = new LinkedList<>();
+		q.add(curXR);
+		q.add(curYR);
+		q.add(curXB);
+		q.add(curYB);
+		q.add(cnt);
+
+		while (!q.isEmpty()) {
+			curXR = q.remove();
+			curYR = q.remove();
+			curXB = q.remove();
+			curYB = q.remove();
+			cnt = q.remove();
+			
+			
+			System.out.print(curXR);
+			System.out.print(curYR);
+			System.out.print(curXB);
+			System.out.print(curYB);
+			System.out.print(cnt);
+			System.out.println();
+			
+			// 카운트 초과
+			if (cnt == 11) {
+				System.out.println(-1);
+				return;
+			}
+			if(visited[curXR][curYR][curXB][curYB] != true){
+				visited[curXR][curYR][curXB][curYB] = true;
+				// 상
+				if (curXR == curXB) {// RB 같은 열에 있으면
+					if (curYR < curYB) {// R이 위에 있으면
+						// R 상방 확인
+						int skip = 0;
+						int tmpR = 0;
+						while (true) {
+							tmpR++;
+							if(curYR - tmpR > 1){ // 상벽에 닿는지 확인
+								if (map[curYR - tmpR][curXR] == '#') {
+									q.add(curXR);
+									q.add(curYR - tmpR + 1);
+									break;
+								} else if(map[curYR - tmpR][curXR] == '.'){
+									continue;
+								} else if(map[curYR - tmpR][curXR] == 'O'){// 골이면
+									int checkB = 0;
+									while(true){
+										checkB++;
+										if (map[curYR + checkB][curXR] == '#') {
+											System.out.println(cnt + 1);
+											return;
+										} else if(map[curYR + checkB][curXR] == '.'){
+											continue;
+										} else if(curYR + checkB == curYB){
+											
+											skip = 1;
+											break;
+										}
+									}
+									break;
+								}
+							}else{
+								q.add(curXR);
+								q.add(curYR - tmpR + 1);
+								break;
+							}
+						}
+						// B 상방 확인
+						if(skip == 0){
+							int tmpB = 0;
+							while (true) {
+								tmpB++;
+								if(curYB - tmpB > 1){ // 상벽에 닿는지 확인
+									if (map[curYB - tmpB][curXB] == '#' ||
+										curYB - tmpB == curYR) {
+										q.add(curXB);
+										q.add(curYB - tmpB + 1);
+										break;
+									} else if(map[curYB - tmpB][curXB] == '.'){
+										continue;
+									} else if(map[curYB - tmpB][curXB] == 'O'){// 골이면
+										
+										break;
+									}
+								}
+							}
+							q.add(cnt + 1);
+						}
+					} else {// B가 위에 있으면
+						// B 상방 확인
+						int tmpB = 0;
+						while (true) {
+							tmpB++;
+							if(curYB - tmpB > 1){ // 상벽에 닿는지 확인
+								if (map[curYB - tmpB][curXB] == '#') {
+									q.add(curXB);
+									q.add(curYB - tmpB + 1);
+									break;
+								} else if(map[curYB - tmpB][curXB] == '.'){
+									continue;
+								} else if(map[curYB - tmpB][curXB] == 'O'){// 골이면
+									
+									break;
+								}
+							}else{
+								break;
+							}
+						}
+						// R 상방 확인
+						int tmpR = 0;
+						while (true) {
+							tmpR++;
+							if(curYR - tmpR > 1){ // 상벽에 닿는지 확인
+								if (map[curYR - tmpR][curXR] == '#' ||
+									curYR - tmpR == curYB) {
+									q.add(curXR);
+									q.add(curYR - tmpR + 1);
+									break;
+								} else if(map[curYR - tmpR][curXR] == '.'){
+									continue;
+								} else if(map[curYR - tmpR][curXR] == 'O'){// 골이면
+									System.out.println(cnt + 1);
+									return;
+								}
+							}
+						}
+						q.add(curXB);
+						q.add(curYB - tmpB + 1);
+						q.add(cnt + 1);
+					}
+				} else {// RB 같은 열에 없으면
+					// R 상방 확인
+					int tmpR = 0;
+					while (true) {
+						tmpR++;
+						if(curYR - tmpR > 1){ // 상벽에 닿는지 확인
+							if (map[curYR - tmpR][curXR] == '#') {
+								q.add(curXR);
+								q.add(curYR - tmpR + 1);
+								break;
+							} else if(map[curYR - tmpR][curXR] == '.'){
+								continue;
+							} else if(map[curYR - tmpR][curXR] == 'O'){// 골이면
+								System.out.println(cnt + 1);
+								return;
+							}
+						}else{
+							q.add(curXR);
+							q.add(curYR - tmpR + 1);
+							break;
+						}
+					}
+					// B 상방 확인
+					int tmpB = 0;
+					while (true) {
+						tmpB++;
+						if(curYB - tmpB > 1){ // 상벽에 닿는지 확인
+							if (map[curYB - tmpB][curXB] == '#') {
+								q.add(curXB);
+								q.add(curYB - tmpB + 1);
+								break;
+							} else if(map[curYB - tmpB][curXB] == '.'){
+								continue;
+							} else if(map[curYB - tmpB][curXB] == 'O'){// 골이면
+								
+								break;
+							}
+						}else{
+							q.add(curXB);
+							q.add(curYB - tmpB + 1);
+							break;
+						}
+					}
+					q.add(cnt + 1);
+				}
+				
+			// 하
+				if (curXR == curXB) {// RB 같은 열에 있으면
+					if (curYR > curYB) {// R이 하에 있으면
+						// R 하방 확인
+						int skip = 0;
+						int tmpR = 0;
+						while (true) {
+							tmpR++;
+							if(curYR + tmpR < n){ // 하벽에 닿는지 확인
+								if (map[curYR + tmpR][curXR] == '#') {
+									q.add(curXR);
+									q.add(curYR + tmpR - 1);
+									break;
+								} else if(map[curYR + tmpR][curXR] == '.'){
+									continue;
+								} else if(map[curYR + tmpR][curXR] == 'O'){
+									int checkB = 0;
+									while(true){
+										checkB++;
+										if (map[curYR - checkB][curXR] == '#') {
+											System.out.println(cnt + 1);
+											return;
+										} else if(map[curYR - checkB][curXR] == '.'){
+											continue;
+										} else if(curYR - checkB == curYB){
+											
+											skip = 1;
+											break;
+										}
+									}
+									break;
+								}
+							}else{
+								q.add(curXR);
+								q.add(curYR + tmpR - 1);
+								break;
+							}
+						}
+						// B 하방 확인
+						if(skip == 0){
+							int tmpB = 0;
+							while (true) {
+								tmpB++;
+								if(curYB + tmpB < n){ // 하벽에 닿는지 확인
+									if (map[curYB + tmpB][curXB] == '#' ||
+											curYB + tmpB == curYR) {
+										q.add(curXB);
+										q.add(curYB + tmpB - 1);
+										break;
+									} else if(map[curYB + tmpB][curXB] == '.'){
+										continue;
+									} else if(map[curYB + tmpB][curXB] == 'O'){// 골이면
+										
+										break;
+									}
+								}
+							}
+							q.add(cnt + 1);
+						}
+					} else {// B가 하에 있으면
+						// B 하방 확인
+						int tmpB = 0;
+						while (true) {
+							tmpB++;
+							if(curYB + tmpB < n){ // 하벽에 닿는지 확인
+								if (map[curYB + tmpB][curXB] == '#') {
+									q.add(curXB);
+									q.add(curYB + tmpB - 1);
+									break;
+								} else if(map[curYB + tmpB][curXB] == '.'){
+									continue;
+								} else if(map[curYB + tmpB][curXB] == 'O'){// 골이면
+									
+									break;
+								}
+							}else{
+								break;
+							}
+						}
+						// R 상방 확인
+						int tmpR = 0;
+						while (true) {
+							tmpR++;
+							if(curYR + tmpR < n){ // 상벽에 닿는지 확인
+								if (map[curYR + tmpR][curXR] == '#' ||
+										curYR + tmpR == curYB) {
+									q.add(curXR);
+									q.add(curYR + tmpR - 1);
+									break;
+								} else if(map[curYR + tmpR][curXR] == '.'){
+									continue;
+								} else if(map[curYR + tmpR][curXR] == 'O'){// 골이면
+									System.out.println(cnt + 1);
+									return;
+								}
+							}
+						}
+						q.add(curXB);
+						q.add(curYB + tmpB - 1);
+						q.add(cnt + 1);
+					}
+				} else {// RB 같은 열에 없으면
+					// R 하방 확인
+					int tmpR = 0;
+					while (true) {
+						tmpR++;
+						if(curYR + tmpR < n){ // 하벽에 닿는지 확인
+							if (map[curYR + tmpR][curXR] == '#') {
+								q.add(curXR);
+								q.add(curYR + tmpR - 1);
+								break;
+							} else if(map[curYR + tmpR][curXR] == '.'){
+								continue;
+							} else if(map[curYR + tmpR][curXR] == 'O'){// 골이면
+								System.out.println(cnt + 1);
+								return;
+							}
+						}else{
+							q.add(curXR);
+							q.add(curYR + tmpR - 1);
+							break;
+						}
+					}
+					// B 하방 확인
+					int tmpB = 0;
+					while (true) {
+						tmpB++;
+						if(curYB + tmpB < n){ // 하벽에 닿는지 확인
+							if (map[curYB + tmpB][curXB] == '#') {
+								q.add(curXB);
+								q.add(curYB + tmpB - 1);
+								break;
+							} else if(map[curYB + tmpB][curXB] == '.'){
+								continue;
+							} else if(map[curYB + tmpB][curXB] == 'O'){// 골이면
+								
+								break;
+							}
+						}else{
+							q.add(curXB);
+							q.add(curYB + tmpB - 1);
+							break;
+						}
+					}
+					q.add(cnt + 1);
+				}
+			// 좌
+				if (curYR == curYB) {// RB 같은 행에 있으면
+					if (curXR < curXB) {// R이 좌에 있으면
+						// R 좌방 확인
+						int tmpR = 0;
+						int skip = 0;
+						while (true) {
+							tmpR++;
+							if(curXR - tmpR > 1){ // 좌벽에 닿는지 확인
+								if (map[curYR][curXR - tmpR] == '#') {
+									q.add(curXR - tmpR +1);
+									q.add(curYR);
+									break;
+								} else if(map[curYR][curXR - tmpR] == '.'){
+									continue;
+								} else if(map[curYR][curXR - tmpR] == 'O'){
+									int checkB = 0;
+									while(true){
+										checkB++;
+										if (map[curYR][curXR + checkB] == '#') {
+											System.out.println(cnt + 1);
+											return;
+										} else if(map[curYR][curXR + checkB] == '.'){
+											continue;
+										} else if(curXR + checkB == curXB){
+											
+											skip = 1;
+											break;
+										}
+									}
+									break;
+								}
+							}else{
+								q.add(curXR - tmpR + 1);
+								q.add(curYR);
+								break;
+							}
+						}
+						// B 좌방 확인
+						if(skip == 0){
+							int tmpB = 0;
+							while (true) {
+								tmpB++;
+								if(curXB - tmpB > 1){ // 좌벽에 닿는지 확인
+									if (map[curYB][curXB - tmpB] == '#' ||
+											curXB - tmpB == curXR) {
+										q.add(curXB - tmpB + 1);
+										q.add(curYB);
+										break;
+									} else if(map[curYB][curXB - tmpB] == '.'){
+										continue;
+									} else if(map[curYB][curXB - tmpB] == 'O'){// 골이면
+										
+										break;
+									}
+								}
+							}
+							q.add(cnt + 1);
+						}
+					} else {// B가 좌에 있으면
+						// B 좌방 확인
+						int tmpB = 0;
+						while (true) {
+							tmpB++;
+							if(curXB - tmpB > 1){ // 좌벽에 닿는지 확인
+								if (map[curYB][curXB - tmpB] == '#') {
+									q.add(curXB - tmpB + 1);
+									q.add(curYB);
+									break;
+								} else if(map[curYB][curXB - tmpB] == '.'){
+									continue;
+								} else if(map[curYB][curXB - tmpB] == 'O'){// 골이면
+									
+									break;
+								}
+							}else{
+								break;
+							}
+						}
+						// R 좌방 확인
+						int tmpR = 0;
+						while (true) {
+							tmpR++;
+							if(curXR - tmpR > 1){ // 좌벽에 닿는지 확인
+								if (map[curYR][curXR - tmpR] == '#' ||
+										curXR - tmpR == curXB) {
+									q.add(curXR - tmpR + 1);
+									q.add(curYR);
+									break;
+								} else if(map[curYR][curXR - tmpR] == '.'){
+									continue;
+								} else if(map[curYR][curXR - tmpR] == 'O'){// 골이면
+									System.out.println(cnt + 1);
+									return;
+								}
+							}
+						}
+						q.add(curXB - tmpB + 1);
+						q.add(curYB);
+	 					q.add(cnt + 1);
+					}
+				} else {// RB 같은 행에 없으면
+					// R 좌방 확인
+					int tmpR = 0;
+					while (true) {
+						tmpR++;
+						if(curXR - tmpR > 1){ // 좌벽에 닿는지 확인
+							if (map[curYR][curXR - tmpR] == '#') {
+								q.add(curXR - tmpR + 1);
+								q.add(curYR);
+								break;
+							} else if(map[curYR][curXR - tmpR] == '.'){
+								continue;
+							} else if(map[curYR][curXR - tmpR] == 'O'){// 골이면
+								System.out.println(cnt + 1);
+								return;
+							}
+						}else{
+							q.add(curXR - tmpR + 1);
+							q.add(curYR);
+							break;
+						}
+					}
+					// B 좌방 확인
+					int tmpB = 0;
+					while (true) {
+						tmpB++;
+						if(curXB - tmpB > 1){ // 좌벽에 닿는지 확인
+							if (map[curYB][curXB - tmpB] == '#') {
+								q.add(curXB - tmpB + 1);
+								q.add(curYB);
+								break;
+							} else if(map[curYB][curXB - tmpB] == '.'){
+								continue;
+							} else if(map[curYB][curXB - tmpB] == 'O'){// 골이면
+								
+								break;
+							}
+						}else{
+							q.add(curXB - tmpB + 1);
+							q.add(curYB);
+							break;
+						}
+					}
+					q.add(cnt + 1);
+				}
+
+			// 우
+				if (curYR == curYB) {// RB 같은 행에 있으면
+					if (curXR > curXB) {// R이 우에 있으면
+						// R 우방 확인
+						int skip = 0;
+						int tmpR = 0;
+						while (true) {
+							tmpR++;
+							if(curXR + tmpR < m){ // 좌벽에 닿는지 확인
+								if (map[curYR][curXR + tmpR] == '#') {
+									q.add(curXR + tmpR - 1);
+									q.add(curYR);
+									break;
+								} else if(map[curYR][curXR + tmpR] == '.'){
+									continue;
+								} else if(map[curYR][curXR + tmpR] == 'O'){
+									int checkB = 0;
+									while(true){
+										checkB++;
+										if (map[curYR][curXR - checkB] == '#') {
+											System.out.println(cnt + 1);
+											return;
+										} else if(map[curYR][curXR - checkB] == '.'){
+											continue;
+										} else if(curXR - checkB == curXB){
+											skip = 1;
+											break;
+										}
+									}
+									break;
+								}
+							}else{
+								q.add(curXR + tmpR - 1);
+								q.add(curYR);
+								break;
+							}
+						}
+						// B 우방 확인
+						if(skip == 0){
+							int tmpB = 0;
+							while (true) {
+								tmpB++;
+								if(curXB + tmpB < m){ // 우벽에 닿는지 확인
+									if (map[curYB][curXB + tmpB] == '#' ||
+											curXB + tmpB == curXR) {
+										System.out.println(curXB + tmpB - 1);
+										System.out.println(curYB);
+										q.add(curXB + tmpB - 1);
+										q.add(curYB);
+										break;
+									} else if(map[curYB][curXB + tmpB] == '.'){
+										continue;
+									} else if(map[curYB][curXB + tmpB] == 'O'){// 골이면
+										
+										break;
+									}
+								}
+							}
+							q.add(cnt + 1);
+						}
+					} else {// B가 우에 있으면
+						// B 우방 확인
+						int tmpB = 0;
+						while (true) {
+							tmpB++;
+							if(curXB + tmpB < m){ // 우벽에 닿는지 확인
+								if (map[curYB][curXB + tmpB] == '#') {
+									q.add(curXB + tmpB - 1);
+									q.add(curYB);
+									break;
+								} else if(map[curYB][curXB + tmpB] == '.'){
+									continue;
+								} else if(map[curYB][curXB + tmpB] == 'O'){// 골이면
+									
+									break;
+								}
+							}else{
+								break;
+							}
+						}
+						// R 우방 확인
+						int tmpR = 0;
+						while (true) {
+							tmpR++;
+							if(curXR + tmpR < m){ // 우벽에 닿는지 확인
+								if (map[curYR][curXR + tmpR] == '#' ||
+										curXR + tmpR == curXB) {
+									q.add(curXR + tmpR - 1);
+									q.add(curYR);
+									break;
+								} else if(map[curYR][curXR + tmpR] == '.'){
+									continue;
+								} else if(map[curYR][curXR + tmpR] == 'O'){// 골이면
+									System.out.println(cnt + 1);
+									return;
+								}
+							}
+						}
+						q.add(curXB + tmpB - 1);
+						q.add(curYB);
+						q.add(cnt + 1);
+					}
+				} else {// RB 같은 행에 없으면
+					// R 우방 확인
+					int tmpR = 0;
+					while (true) {
+						tmpR++;
+						if(curXR + tmpR < m){ // 우벽에 닿는지 확인
+							if (map[curYR][curXR + tmpR] == '#') {
+								q.add(curXR + tmpR - 1);
+								q.add(curYR);
+								break;
+							} else if(map[curYR][curXR + tmpR] == '.'){
+								continue;
+							} else if(map[curYR][curXR + tmpR] == 'O'){// 골이면
+								System.out.println(cnt + 1);
+								return;
+							}
+						}else{
+							q.add(curXR + tmpR - 1);
+							q.add(curYR);
+							break;
+						}
+					}
+					// B 우방 확인
+					int tmpB = 0;
+					while (true) {
+						tmpB++;
+						if(curXB + tmpB < m){ //우벽에 닿는지 확인
+							if (map[curYB][curXB + tmpB] == '#') {
+								q.add(curXB + tmpB - 1);
+								q.add(curYB);
+								break;
+							} else if(map[curYB][curXB + tmpB] == '.'){
+								continue;
+							} else if(map[curYB][curXB + tmpB] == 'O'){// 골이면
+								
+								break;
+							}
+						}else{
+							q.add(curXB + tmpB - 1);
+							q.add(curYB);
+							break;
+						}
+					}
+					q.add(cnt + 1);
+				}
+			}
+		}
+		System.out.println(-1);
+	}
+}

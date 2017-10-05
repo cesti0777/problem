@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;samsung.practice1.P13460&apos; to &apos;P13460BFS&apos;&#x0D;&#x0A;- Original project: &apos;Problem&apos;&#x0D;&#x0A;- Original element: &apos;samsung.practice1.P13460&apos;&#x0D;&#x0A;- Renamed element: &apos;samsung.practice1.P13460BFS&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;P13460&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;samsung.practice1{P13460.java[P13460" matchStrategy="1" name="P13460BFS" qualified="false" references="true" similarDeclarations="false" stamp="1507200511376" textual="false" version="1.0"/>
+</session>
