@@ -1,0 +1,45 @@
+
+// don't place package name.
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+class Program {
+	static int n = 0;
+	static int m = 0;
+	static char[][] pair = new char[101][3];
+	static LinkedList<Character> alist = new LinkedList<Character>();
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String first = sc.nextLine();
+		int n = Integer.parseInt(first.split(" ")[0]);
+		int m = Integer.parseInt(first.split(" ")[1]);
+		for (int i = 0; i < n; i++) {
+			alist.add((char) (65 + i));
+		}
+		for (int i = 1; i <= m; i++) {
+			String line = sc.nextLine();
+			pair[i][1] = line.charAt(0);
+			pair[i][2] = line.charAt(2);
+		}
+		for (int i = 1; i <= m; i++) {
+			for (int j = 1; j <= m; j++) {
+				if (alist.indexOf(pair[j][1]) < alist.indexOf(pair[j][2])) {
+					continue;
+				} else {
+					alist.remove(alist.indexOf(pair[j][2]));
+					int cnt = 1;
+					while (alist.indexOf(pair[j][1]) + cnt < n - 1
+							&& alist.get(alist.indexOf(pair[j][1]) + cnt) < pair[j][2]) {
+						cnt++;
+					}
+					alist.add(alist.indexOf(pair[j][1]) + cnt, (char) pair[j][2]);
+				}
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			System.out.print(alist.get(i));
+		}
+	}
+}

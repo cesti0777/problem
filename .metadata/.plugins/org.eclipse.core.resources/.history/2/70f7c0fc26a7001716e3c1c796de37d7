@@ -1,0 +1,14 @@
+package midas4;
+
+import java.util.Scanner;
+
+public class Program {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String first = sc.nextLine();
+		String x = first.split(" ")[0];
+		String y = first.split(" ")[1];
+		System.out.println(x.compareTo(y));
+	}
+
+}

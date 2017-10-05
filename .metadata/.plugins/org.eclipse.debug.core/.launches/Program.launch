@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<<<<<<< HEAD
+<listEntry value="/Midas/src/Program.java"/>
+=======
 <listEntry value="/Problem/src/midas/test/Program.java"/>
+>>>>>>> 5acbfbd7261d64a9f8c7826ce14b1336a4bb1963
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
+<<<<<<< HEAD
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Program"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Midas"/>
+=======
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="midas.test.Program"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Problem"/>
+>>>>>>> 5acbfbd7261d64a9f8c7826ce14b1336a4bb1963
 </launchConfiguration>

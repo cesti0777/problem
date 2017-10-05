@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String first = sc.nextLine();
+		int count = Integer.parseInt(first.split(" ")[0]);
+		int distance = Integer.parseInt(first.split(" ")[1]);
+		System.out.println(count + "//" + distance);
+	}
+
+}
