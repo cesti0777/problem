@@ -79,7 +79,6 @@ public class P14503 {
 						break;
 					} else {
 						d = 3;
-						no++;
 						break;
 					}
 				case 1: // µ¿(¿ì)
