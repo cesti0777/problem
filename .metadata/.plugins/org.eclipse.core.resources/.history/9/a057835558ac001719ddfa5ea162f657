@@ -1,0 +1,81 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P14502 {
+	static int[][] map = new int[9][9];
+	static int[][][][][][] visited = new int[9][9][9][9][9][9];
+	static int n;
+	static int m;
+	static int x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0;
+	static int[] comb = null;
+	static int[][] blankP = null;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		n = in.nextInt();
+		m = in.nextInt();
+		in.nextLine();
+
+		blankP = new int[2][];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				map[i][j] = in.nextInt();
+				if ((map[i][j] = in.nextInt()) == 0) {
+					blankP[0][i * j + j] = j;
+					blankP[1][i * j + j] = i;
+				}
+			}
+		}
+
+//		for (int i = 0; i < n * m; i++) {
+//			System.out.println(blankP[0][i] + " " + blankP[1][i]);
+//		}
+
+		// int blackCnt = blankP.length * blankP[0].length;
+		//
+		// comb = new int[blackCnt];
+		//
+		// combination(comb, 0, blankP.length * blankP[0].length, 3, 0);
+
+		// dfs();
+
+		// for(int i = 1; i <= n; i++){
+		// for(int j = 1; j <= m; j++){
+		// System.out.print(map[i][j]);
+		// }
+		// System.out.println();
+		// }
+	}
+
+	public static void combination(int[] arr, int index, int n, int r, int target) {
+		if (r == 0)
+			print(arr, index);
+		else if (target == n)
+			return;
+		else {
+			arr[index] = target;
+			combination(arr, index + 1, n, r - 1, target + 1);
+			combination(arr, index, n, r, target + 1);
+		}
+	}// end combination()
+
+	public static void print(int[] arr, int length) {
+		for (int i = 0; i < length; i++)
+			System.out.print(arr[i]);
+		System.out.println("");
+	}
+
+	public static void dfs() {
+
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= m; j++) {
+				if (map[i][j] == 0) {
+
+				}
+			}
+		}
+	}
+
+}
