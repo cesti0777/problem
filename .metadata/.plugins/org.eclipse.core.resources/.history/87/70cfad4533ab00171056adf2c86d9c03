@@ -1,0 +1,27 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P14502 {
+	static int[][] map = new int[9][9];
+	static int n;
+	static int m;
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		n = in.nextInt();
+		m = in.nextInt();
+		in.nextLine();
+		for(int i = 1; i <= n; i++){
+			for(int j = 1; j <= m; j++){
+				map[i][j] = in.nextInt();
+			}
+		}
+		for(int i = 1; i <= n; i++){
+			for(int j = 1; j <= m; j++){
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+		
+	}
+}
