@@ -1,0 +1,172 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P3190 {
+	static int[][] map = new int[100][100];
+	static int n;
+	static int k;
+	static int l;
+	static int r;
+	static int c;
+	static String[][] d = new String[100][];
+	static char currentD;
+	static int second;
+	static int dCnt;
+	static int len;
+	
+	private static void print() {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				System.out.print("   " + map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	private static void move(int beforeR, int beforeC) {
+		for(int a = len; a >= 1; a--){
+			for(int i = 0; i < n; i++){
+				for(int j = 0; j < n; j++){
+					if(i != beforeR && j != beforeC && map[i][j] == a){
+						map[i][j]--;
+						beforeR = i;
+						beforeC = j;
+					}
+				}
+			}
+		}
+	}
+	
+	
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		n = in.nextInt();
+		k = in.nextInt();
+
+		// 사과 위치 설정
+		for (int i = 0; i < k; i++) {
+			map[in.nextInt() - 1][in.nextInt() - 1] = -1;
+		}
+		
+		l = in.nextInt();
+		in.nextLine();
+		//변환 정보 저장
+		for (int i = 0; i < l; i++) {
+			d[i] = in.nextLine().split(" ");
+		}
+		
+		second = 0;
+		r = 0;
+		c = 0;
+		currentD = 'R';
+		map[r][c] = 1;
+		dCnt = 0;
+		len = 1;
+		
+		
+		while(true){
+			second++;
+			if(currentD == 'R'){
+				if(c + 1 == n || map[r][c + 1] == 1){
+					System.out.println(second);
+					print();
+					return;
+				}else if(map[r][c + 1] == -1){
+					len++;
+					map[r][c + 1] = len;
+					c++;
+				}else{
+					map[r][c + 1] = len;
+					int beforeR = r;
+					int beforeC = c + 1;
+					move(beforeR, beforeC);
+					c++;
+				}
+				
+			}else if(currentD == 'D'){
+				if(r + 1 == n || map[r + 1][c] == 1){
+					System.out.println(second);
+					print();
+					return;
+				}else if(map[r + 1][c] == -1){
+					len++;
+					map[r + 1][c] = len;
+					r++;
+				}else{
+					map[r + 1][c] = len;
+					int beforeR = r + 1;
+					int beforeC = c;
+					move(beforeR, beforeC);
+					r++;
+				}
+			}else if(currentD == 'L'){
+				if(c - 1 == -1 || map[r][c] == 1){
+					System.out.println(second);
+					print();
+					return;
+				}else if(map[r][c - 1] == -1){
+					len++;
+					map[r][c - 1] = len;
+					c--;
+				}else{
+					map[r][c - 1] = len;
+					int beforeR = r;
+					int beforeC = c - 1;
+					move(beforeR, beforeC);
+					c--;
+				}
+			}else if(currentD == 'U'){
+				if(r - 1 == -1 || map[r][c] == 1){
+					System.out.println(second);
+					print();
+					return;
+				}else if(map[r - 1][c] == -1){
+					len++;
+					map[r - 1][c] = len;
+					r--;
+				}else{
+					map[r - 1][c] = len;
+					int beforeR = r - 1;
+					int beforeC = c;
+					move(beforeR, beforeC);
+					r--;
+				}
+			}
+			
+//			System.out.println(d[dCnt][0] + "<<<<<");
+//			return;
+//			
+			if(Integer.parseInt(d[dCnt][0]) == second){
+				if(d[dCnt][1].equals("D")){
+					if(currentD == 'R'){
+						currentD = 'D';
+					}else if(currentD == 'D'){
+						currentD = 'L';
+					}else if(currentD == 'L'){
+						currentD = 'U';
+					}else if(currentD == 'U'){
+						currentD = 'R';
+					}
+				}else if(d[dCnt][1].equals("L")){
+					if(currentD == 'R'){
+						currentD = 'U';
+					}else if(currentD == 'D'){
+						currentD = 'R';
+					}else if(currentD == 'L'){
+						currentD = 'D';
+					}else if(currentD == 'U'){
+						currentD = 'L';
+					}
+				}
+				dCnt++;
+			}
+			
+			print();
+			System.out.println();
+		}//end while
+	}//end main
+	
+	
+}
