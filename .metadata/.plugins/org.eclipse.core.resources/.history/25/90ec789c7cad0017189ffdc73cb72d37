@@ -1,0 +1,47 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P14499 {
+	static int n;
+	static int m;
+	static int r;
+	static int c;
+	static int k;
+	static int map[][] = new int[20][20];
+	static int order[] = new int[1000];
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		n = in.nextInt();
+		m = in.nextInt();
+		r = in.nextInt();
+		c = in.nextInt();
+		k = in.nextInt();
+		
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){
+				map[i][j] = in.nextInt();
+			}
+		}
+		
+		for(int i = 0; i < k; i++){
+			order[i] = in.nextInt();
+		}
+		
+		System.out.println();
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){
+				System.out.print(map[i][j] + " ");
+				map[i][j] = in.nextInt();
+			}
+			System.out.println();
+		}
+		
+		for(int i = 0; i < k; i++){
+			System.out.print(order[i] + " ");
+		}
+		
+	}
+}
