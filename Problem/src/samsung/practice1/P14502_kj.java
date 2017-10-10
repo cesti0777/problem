@@ -7,7 +7,9 @@ public class P14502_kj {
 	static int m;
 	static int[][] map = new int[8][8];
 	static int[][] tempmap = new int[8][8];
-	static int nowcount = 0;
+
+	static int nowcount;
+	static boolean[][] visited;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -20,44 +22,37 @@ public class P14502_kj {
 			}
 		}
 
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				tempmap[i][j] = map[i][j];
+
+		for (int x = 0; x < n; x++) {
+			for (int y = 0; y < m; y++) {
+				tempmap[x][y] = map[x][y];
 			}
 		}
-
-		// spread(tempmap);
-		// System.out.println(count(tempmap));
-		// for (int i = 0; i < n; i++) {
-		// for (int j = 0; j < m; j++) {
-		// System.out.print(tempmap[i][j]);
-		// System.out.print(" ");
-		// }
-		// System.out.println();
-		// }
-
+		nowcount = 0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				if (tempmap[i][j] == 0) {
-					for (int i2 = 0; i2 < n; i2++) {
-						for (int j2 = 0; j2 < m; j2++) {
-							if (tempmap[i2][j2] == 0) {
-								for (int i3 = 0; i3 < n; i3++) {
-									for (int j3 = 0; j3 < m; j3++) {
-										if (i3 != i && i3 != i2 && j3 != j && j3 != j2 && i2 != i && j2 != j
-												&& tempmap[i3][j3] == 0) {
-											tempmap[i][j] = 1;
-											tempmap[i2][j2] = 1;
-											tempmap[i3][j3] = 1;
-											spread(tempmap);
-											System.out.println(count(tempmap));
-											//System.out.println(i+"/"+j+"_"+i2+"/"+j2+"_"+i3+"/"+j3+":"+count(tempmap));
-											if (nowcount < count(tempmap))
-												nowcount = count(tempmap);
-											tempmap[i][j] = 0;
-											tempmap[i2][j2] = 0;
-											tempmap[i3][j3] = 0;
+				for (int k = 0; k < n; k++) {
+					for (int z = 0; z < m; z++) {
+						for (int s = 0; s < n; s++) {
+							for (int t = 0; t < m; t++) {
+								if (map[i][j] == 0 && map[k][z] == 0 && map[s][t] == 0) {
+									if (equal(i, j, k, z, s, t)) {
+										tempmap[i][j] = 1;
+										tempmap[k][z] = 1;
+										tempmap[s][t] = 1;
+										visited = new boolean[8][8];
+										spread(tempmap);
+										
+										if (nowcount <= count(tempmap)){
+											nowcount = count(tempmap);
 										}
+										//////////////////수정한 부분 start///////////////////
+										for (int x = 0; x < n; x++) {
+											for (int y = 0; y < m; y++) {
+												tempmap[x][y] = map[x][y];
+											}
+										}
+										//////////////////수정한 부분 end/////////////////////
 									}
 								}
 							}
@@ -69,18 +64,36 @@ public class P14502_kj {
 		System.out.println(nowcount);
 	}
 
+	public static boolean equal(int i, int j, int k, int z, int s, int t) { // 벽
+																			// 3개
+																			// 다
+																			// 다른
+																			// 위치인지
+																			// 확인
+		if (i == k && j == z)
+			return false;
+		else if (i == s && j == t)
+			return false;
+		else if (k == s && z == t)
+			return false;
+		else
+			return true;
+	}
+
 	public static void spread(int[][] tempmap) { // 바이러스 확산
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				if (tempmap[i][j] == 2) {
-					if (i - 1 >= 0 && j < m && tempmap[i - 1][j] == 0)
+				if (tempmap[i][j] == 2 && !visited[i][j]) {
+					if (i - 1 >= 0 && tempmap[i - 1][j] == 0)
 						tempmap[i - 1][j] = 2;
-					if (i + 1 < n && j < m && tempmap[i + 1][j] == 0)
+					if (i + 1 < n && tempmap[i + 1][j] == 0)
 						tempmap[i + 1][j] = 2;
-					if (j - 1 >= 0 && i < n && tempmap[i][j - 1] == 0)
+					if (j - 1 >= 0 && tempmap[i][j - 1] == 0)
 						tempmap[i][j - 1] = 2;
-					if (j + 1 < m && i < n && tempmap[i][j + 1] == 0)
+					if (j + 1 < m && tempmap[i][j + 1] == 0)
 						tempmap[i][j + 1] = 2;
+					visited[i][j] = true;
+					spread(tempmap);
 				}
 			}
 		}

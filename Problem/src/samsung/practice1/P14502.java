@@ -1,108 +1,116 @@
 package samsung.practice1;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class P14502 {
 	static int[][] map = new int[8][8];
-	static int[][][][][][] visited = new int[9][9][9][9][9][9];
+	static int[][] copyMap = new int[8][8];
+	static int[] selectedWall = new int[64];
+	static int[] dr = { -1, 1, 0, 0 };
+	static int[] dc = { 0, 0, -1, 1 };
 	static int n;
 	static int m;
-	static int x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0;
-	static int[] comb = null;
-	static int[][] blankP = null;
-	static int[][] wall = null;
-	static int combCnt = 0;
-	
+	static int max = 0;
+
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		n = in.nextInt();
 		m = in.nextInt();
 		in.nextLine();
 
-		
-		int blackCnt = 0;
+		// 맵 저장
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				if ((map[i][j] = in.nextInt()) == 0) {
-					blackCnt++;
-				}
-			}
-		}
-		
-		blankP = new int[2][blackCnt];
-		
-		int idx = 0;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				if (map[i][j]== 0) {
-					blankP[0][idx] = i;
-					blankP[1][idx] = j;
-					idx++;
-				}
+				map[i][j] = in.nextInt();
 			}
 		}
 
-		for (int i = 0; i < blackCnt; i++) {
-			System.out.println(blankP[0][i] + " " + blankP[1][i]);
-		}
-		
-		comb = new int[blackCnt];
-		 
-		combination(comb, 0, blackCnt, 3, 0);
-		System.out.println(combCnt);
-		
-		//조합 개수만큼 루프
-		for(int i = 0; i < combCnt; i++){
-			
-			
-			
-		}
-		
+		// 벽 세울 3자리 뽑는 루프
+		for (int i = 0; i < n * m - 2; i++) {
+			for (int j = i + 1; j < n * m - 1; j++) {
+				for (int k = j + 1; k < n * m; k++) {
 
-		// dfs();
+					// selectedWall 초기화
+					for (int a = 0; a < 64; a++) {
+						selectedWall[a] = 0;
+					}
 
-		// for(int i = 1; i <= n; i++){
-		// for(int j = 1; j <= m; j++){
-		// System.out.print(map[i][j]);
-		// }
-		// System.out.println();
-		// }
-	}
+					selectedWall[i] = 1;
+					selectedWall[j] = 1;
+					selectedWall[k] = 1;
 
-	public static void combination(int[] arr, int index, int n, int r, int target) {
-		if (r == 0)
-			print(arr, index);
-		else if (target == n)
-			return;
-		else {
-			arr[index] = target;
-			combination(arr, index + 1, n, r - 1, target + 1);
-			combination(arr, index, n, r, target + 1);
-		}
-	}// end combination()
+					// 맵 복사
+					for (int a = 0; a < n; a++) {
+						for (int b = 0; b < m; b++) {
+							copyMap[a][b] = map[a][b];
+						}
+					}
+					
+					// 벽 세우기
+					int cnt = 0;
+					for (int a = 0; a < n; a++) {
+						for (int b = 0; b < m; b++) {
+							if (map[a][b] == 0 && selectedWall[a * m + b] == 1) {//
+								copyMap[a][b] = 1;
+								cnt++;
+							}
+						}
+					}
 
-	public static void print(int[] arr, int length) {
-		for (int i = 0; i < length; i++) {
-			System.out.print(arr[i] + " ");
-			
-		}
-		combCnt++;
-		System.out.println("");
-	}
+					// 벽 3개를 못 세웠으면 continue
+					if (cnt != 3) {
+						continue;
+					}
 
-	public static void makeWall(int r, int c) {
+					// 바이러스 위치 큐에 푸시
+					Queue<Integer> q = new LinkedList<Integer>();
+					for (int a = 0; a < n; a++) {
+						for (int b = 0; b < m; b++) {
+							if (copyMap[a][b] == 2) {
+								q.add(a);
+								q.add(b);
+							}
+						}
+					}
 
-	}
+					// 바이러스 확산
+					while (!q.isEmpty()) {
+						int r = q.remove();
+						int c = q.remove();
 
-	public static void dfs() {
+						// 4방향 확인 후 감염
+						for (int a = 0; a < 4; a++) {
+							if (r + dr[a] >= 0 && r + dr[a] < n && c + dc[a] >= 0 && c + dc[a] < m) {
+								if (copyMap[r + dr[a]][c + dc[a]] == 0) {
+									copyMap[r + dr[a]][c + dc[a]] = 2;
+									q.add(r + dr[a]);
+									q.add(c + dc[a]);
+								}
+							}
+						}
+					}
 
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= m; j++) {
-				if (map[i][j] == 0) {
+					// 안전지역 카운트
+					int safe = 0;
+					for (int a = 0; a < n; a++) {
+						for (int b = 0; b < m; b++) {
+							if (copyMap[a][b] == 0) {
+								safe++;
+							}
+						}
+					}
 
-				}
-			}
-		}
-	}
+					// 안전지역 최대값 갱신
+					max = Math.max(max, safe);
 
+				} // end k for loop
+			} // end j for loop
+		} // end i for loop
+
+		// 결과값 출력
+		System.out.println(max);
+
+	}// end main()
 }
