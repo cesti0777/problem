@@ -22,17 +22,13 @@ public class P14501 {
 			day[i][0] = in.nextInt();
 			day[i][1] = in.nextInt();
 		}
-		
-//		for(int i = 0; i < n; i++){
-//			System.out.println(day[i][0] +" "+ day[i][1]);
-//		}
-		
+
 		Queue<Integer> q = new LinkedList<Integer>();
 		for(int i = 0; i < n; i++){
-			q.add(i);
-			q.add(day[i][0]);
-			q.add(day[i][1]);
-			q.add(0);
+			q.add(i);//day ÀÎµ¦½º
+			q.add(day[i][0]);//day ½Ã°£
+			q.add(day[i][1]);//day ±Þ¿©
+			q.add(0);//ÃÑ ±Þ¿©
 		}
 		
 		while(!q.isEmpty()){
@@ -47,21 +43,13 @@ public class P14501 {
 			
 			totalPay += p;
 			
-//			System.out.println(dNum);
-//			System.out.println(t);
-//			System.out.println(p);
-//			System.out.println(totalPay);
-			
+			for(int i = dNum + t; i < n; i++){
+				q.add(i);
+				q.add(day[i][0]);
+				q.add(day[i][1]);
+				q.add(totalPay);
+			}
 			max = Math.max(max, totalPay);
-			
-			q.add(dNum + t);
-			q.add(day[dNum + t][0]);
-			q.add(day[dNum + t][1]);
-			q.add(totalPay);
-			
-			
-			
-			
 		}
 		System.out.println(max);
 	}
