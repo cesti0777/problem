@@ -1,0 +1,70 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P12100 {
+	static int n;
+	static int map[][] = new int[20][20];
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		n = in.nextInt();
+		
+		//맵 입력
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				map[i][j] = in.nextInt();
+			}
+		}
+		
+//		print();
+		
+		while(true){
+			
+			//상
+			//한 열씩 보면서 0보타 큰 수를 찾고 
+			//그 수와 같은 수가 있는지 찾아서 합친다
+			//합친 후 visited표시
+			int tmpI = 0;
+			int tmpJ = 0;
+			for(int j = 0; j < n; j++){
+				for(int i = 0; i < n; i++){
+					if(map[i][j] > 0){
+						tmpI = i;
+						tmpJ = j;
+						continue;
+					}
+					
+					if(map[i][j] == map[tmpI][tmpJ]){
+						map[tmpI][tmpJ] *= 2;
+						map[i][j] = 0;
+					}
+				}
+			}
+			
+			//하
+			
+			//좌
+			
+			//우
+			
+		}
+		
+		
+	}
+
+	
+	
+	
+	public static void print(){
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+}
+
+

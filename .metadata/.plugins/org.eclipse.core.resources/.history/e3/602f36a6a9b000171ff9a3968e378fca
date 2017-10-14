@@ -1,0 +1,109 @@
+package samsung.practice1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class P12100 {
+	static int n;
+	static int map[][] = new int[20][20];
+	static boolean visited[][] = new boolean[20][20];
+	static Map m;
+	static Map cloneMap;
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		n = in.nextInt();
+		
+		//맵 입력
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				map[i][j] = in.nextInt();
+			}
+		}
+		
+//		print();
+		
+		Queue<Map> q = new LinkedList<Map>();
+		q.add(new Map(map, visited));
+		
+		while(true){
+			int tmpI = 0;
+			int tmpJ = 0;
+			
+			m = q.remove();
+			cloneMap = clone(m);
+			
+			//상
+			//한 열씩 보면서 0보타 큰 수를 찾고 
+			//그 수와 같은 수가 있는지 찾아서 합친다
+			//합친 후 visited표시
+			for(int j = 0; j < n; j++){
+				int cnt = 0;
+				for(int i = 0; i < n; i++){
+					if(m.map[i][j] > 0){
+						tmpI = i;
+						tmpJ = j;
+						continue;
+					}
+					
+					if(m.map[i][j] == m.map[tmpI][tmpJ]){
+						m.map[tmpI][tmpJ] *= 2;
+						m.map[i][j] = 0;
+						
+						cnt = 0;
+					}
+				}
+				int tmp = 0;
+				for(int i = 0; i < cnt; i++){
+					for(int k = 0; k < n; k++){
+						if(m.map[k][j] > 0){
+							 tmp = m.map[k][j];
+							 m.map[k][j] = 0;
+							 m.map[cnt][j] = tmp;
+							 m.visited[k][j] = false;
+							 m.visited[cnt][j] = true;
+							 break;
+						 }
+					}
+				}
+				q.add(new Map(m.map, m.visited));
+					
+			}
+			
+			//하
+			
+			//좌
+			
+			//우
+			
+		}
+		
+		
+	}
+
+	public static void print() {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
+//	public Map clone(m){
+//		clone = new Map(m.map, m.visited);
+//		return clone;
+//	}
+	
+	public static class Map{
+		int[][] map = new int[20][20];
+		boolean[][] visited = new boolean[20][20];
+		public Map() {}
+		public Map(int[][] map, boolean[][] visited) {
+			super();
+			this.map = map;
+			this.visited = visited;
+		} 
+	}
+}
