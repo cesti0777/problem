@@ -43,7 +43,7 @@ public class P12100 {
 			// 그 수와 같은 수가 있는지 찾아서 합친다
 			// 합친 후 visited표시
 			cloneMap = cloneMap(m);
-//			System.out.println(11111);
+			System.out.println(11111);
 			for (int j = 0; j < n; j++) {
 				int cnt = 0;
 				for (int i = 0; i < n; i++) {
@@ -70,8 +70,8 @@ public class P12100 {
 						}
 					}
 				}
-//				print(cloneMap);
-//				System.out.println();
+				print(cloneMap);
+				System.out.println();
 				int tmp = 0;
 				boolean tmpB = false;
 				for (int i = 0; i < cnt; i++) {
@@ -87,7 +87,7 @@ public class P12100 {
 					}
 				}
 			}
-//			print(cloneMap);
+			print(cloneMap);
 			countMax(cloneMap);
 			if(!isSameMap(cloneMap, m)){
 				cloneMap.cnt++;
@@ -97,7 +97,7 @@ public class P12100 {
 
 			// 하
 			cloneMap = cloneMap(m);
-//			System.out.println(22222);
+			System.out.println(22222);
 			for (int j = 0; j < n; j++) {
 				int cnt = 0;
 				for (int i = n - 1; i >= 0; i--) {
@@ -126,7 +126,7 @@ public class P12100 {
 				}
 				int tmp = 0;
 				boolean tmpB = false;
-				for (int i = n - 1; i >= n - cnt; i--) {
+				for (int i = n - 1; i >= n - cnt + 1; i--) {
 					for (int k = i; k >= 0; k--) {
 						if (cloneMap.map[k][j] > 0) {
 							tmp = cloneMap.map[k][j];
@@ -139,7 +139,7 @@ public class P12100 {
 					}
 				}
 			}
-//			print(cloneMap);
+			print(cloneMap);
 			countMax(cloneMap);
 			if(!isSameMap(cloneMap, m)){
 				cloneMap.cnt++;
@@ -148,7 +148,7 @@ public class P12100 {
 
 			// 좌
 			cloneMap = cloneMap(m);
-//			System.out.println(33333);
+			System.out.println(33333);
 			for (int i = 0; i < n; i++) {
 				int cnt = 0;
 				for (int j = 0; j < n; j++) {
@@ -190,7 +190,7 @@ public class P12100 {
 					}
 				}
 			}
-//			print(cloneMap);
+			print(cloneMap);
 			countMax(cloneMap);
 			if(!isSameMap(cloneMap, m)){
 				cloneMap.cnt++;
@@ -199,8 +199,8 @@ public class P12100 {
 
 			// 우
 			cloneMap = cloneMap(m);
-//			System.out.println(44444);
-//			print(cloneMap);
+			System.out.println(44444);
+			print(cloneMap);
 			for (int i = 0; i < n; i++) {
 				int cnt = 0;
 				for (int j = n - 1; j >= 0; j--) {
@@ -227,12 +227,11 @@ public class P12100 {
 						}
 					}
 				}
-//				System.out.println("합치기");
-//				print(cloneMap);
-//				System.out.println();
+				print(cloneMap);
+				System.out.println();
 				int tmp = 0;
 				boolean tmpB = false;
-				for (int j = n - 1; j >= n - cnt; j--) {
+				for (int j = n - 1; j >= n - cnt + 1; j--) {
 					for (int k = j; k >= 0; k--) {
 						if (cloneMap.map[i][k] > 0) {
 							tmp = cloneMap.map[i][k];
@@ -250,9 +249,9 @@ public class P12100 {
 				cloneMap.cnt++;
 				q.add(cloneMap);
 			}
-//			System.out.println("자리이동");
-//			print(cloneMap);
+			print(cloneMap);
 			m = null;
+			break;
 		}
 		System.out.println(max);
 	}
