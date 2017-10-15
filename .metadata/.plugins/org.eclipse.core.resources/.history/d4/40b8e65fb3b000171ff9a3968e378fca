@@ -1,0 +1,264 @@
+package samsung.practice1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class P12100 {
+	static int n;
+	static int map[][] = new int[20][20];
+	static boolean visited[][] = new boolean[20][20];
+	static Map m;
+	static Map cloneMap;
+	static int max;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		n = in.nextInt();
+
+		// 맵 입력
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				map[i][j] = in.nextInt();
+			}
+		}
+
+		// print();
+
+		Queue<Map> q = new LinkedList<Map>();
+		q.add(new Map(map, visited));
+
+		while (true) {
+			int tmpI = 0;
+			int tmpJ = 0;
+			boolean find = false;
+
+			m = q.remove();
+
+			// 상
+			// 한 열씩 보면서 0보타 큰 수를 찾고
+			// 그 수와 같은 수가 있는지 찾아서 합친다
+			// 합친 후 visited표시
+			cloneMap = new Map(m.map, m.visited);
+			for (int j = 0; j < n; j++) {
+				System.out.println(11111);
+				int cnt = 0;
+				for (int i = 0; i < n; i++) {
+					if (cloneMap.map[i][j] > 0) {
+						tmpI = i;
+						tmpJ = j;
+						cnt++;
+						if (i < n - 1) {
+							for (int k = i + 1; k < n; k++) {
+								if (cloneMap.map[k][j] > 0) {
+									if(visited[k][j] == true){
+										i = k;
+										break;
+									} else if (cloneMap.map[k][j] == cloneMap.map[tmpI][tmpJ]) {
+										cloneMap.map[tmpI][tmpJ] *= 2;
+										cloneMap.map[k][j] = 0;
+									} else{
+										i = k;
+										break;
+									}
+								}
+							}
+						}
+					}
+				}
+				int tmp = 0;
+				for (int i = 0; i < cnt; i++) {
+					for (int k = 0; k < n; k++) {
+						if (cloneMap.map[k][j] > 0) {
+							tmp = m.map[k][j];
+							cloneMap.map[k][j] = 0;
+							cloneMap.map[cnt][j] = tmp;
+							cloneMap.visited[k][j] = false;
+							cloneMap.visited[cnt][j] = true;
+							break;
+						}
+					}
+				}
+				countMax(cloneMap);
+				q.add(cloneMap);
+			}
+
+			// 하
+			cloneMap = new Map(m.map, m.visited);
+			for (int j = 0; j < n; j++) {
+				System.out.println(22222);
+				int cnt = 0;
+				for (int i = n - 1; i >= 0; i--) {
+					if (cloneMap.map[i][j] > 0) {
+						tmpI = i;
+						tmpJ = j;
+						cnt++;
+						if (i > 0) {
+							for (int k = i - 1; k >= 0; k--) {
+								if (cloneMap.map[k][j] > 0) {
+									if(visited[k][j] == true){
+										i = k;
+										break;
+									} else if (cloneMap.map[k][j] == cloneMap.map[tmpI][tmpJ]) {
+										cloneMap.map[tmpI][tmpJ] *= 2;
+										cloneMap.map[k][j] = 0;
+									}else{
+										i = k;
+										break;
+									}
+								}
+							}
+						}
+					} else {
+						continue;
+					}
+				}
+				int tmp = 0;
+				for (int i = n - 1; i >= n - cnt + 1; i--) {
+					for (int k = n - 1; k >= 0; k--) {
+						if (cloneMap.map[k][j] > 0) {
+							tmp = m.map[k][j];
+							cloneMap.map[k][j] = 0;
+							cloneMap.map[cnt][j] = tmp;
+							cloneMap.visited[k][j] = false;
+							cloneMap.visited[cnt][j] = true;
+							break;
+						}
+					}
+				}
+				countMax(cloneMap);
+				q.add(cloneMap);
+			}
+
+			// 좌
+			cloneMap = new Map(m.map, m.visited);
+			for (int i = 0; i < n; i++) {
+				System.out.println(33333);
+				int cnt = 0;
+				for (int j = 0; j < n; j++) {
+					if (cloneMap.map[i][j] > 0) {
+						tmpI = i;
+						tmpJ = j;
+						cnt++;
+						if (j < n - 1) {
+							for (int k = j + 1; k < n; k++) {
+								if (cloneMap.map[i][k] > 0) {
+									if(visited[i][k] == true){
+										j = k;
+										break;
+									} else if (cloneMap.map[i][k] == cloneMap.map[tmpI][tmpJ]) {
+										cloneMap.map[tmpI][tmpJ] *= 2;
+										cloneMap.map[i][k] = 0;
+									} else{
+										j = k;
+										break;
+									}
+								}
+							}
+						}
+					} else {
+						continue;
+					}
+				}
+				int tmp = 0;
+				for (int j = 0; j < cnt; j++) {
+					System.out.println(55555);
+					for (int k = 0; k < n; k++) {
+						if (cloneMap.map[i][k] > 0) {
+							tmp = m.map[i][k];
+							cloneMap.map[i][k] = 0;
+							cloneMap.map[i][cnt] = tmp;
+							cloneMap.visited[i][k] = false;
+							cloneMap.visited[i][cnt] = true;
+							break;
+						}
+					}
+				}
+				countMax(cloneMap);
+				q.add(cloneMap);
+			}
+
+			// 우
+			cloneMap = new Map(m.map, m.visited);
+			for (int i = 0; i < n; i++) {
+				System.out.println(44444);
+				int cnt = 0;
+				for (int j = n - 1; j >= 0; j--) {
+					if (cloneMap.map[i][j] > 0) {
+						tmpI = i;
+						tmpJ = j;
+						cnt++;
+						if (j > 0) {
+							for (int k = n - 1; k >= 0; k--) {
+								if (cloneMap.map[i][k] > 0) {
+									if(visited[i][k] == true){
+										j = k;
+										break;
+									} if (cloneMap.map[i][k] == cloneMap.map[tmpI][tmpJ]) {
+										cloneMap.map[tmpI][tmpJ] *= 2;
+										cloneMap.map[i][k] = 0;
+									} else {
+										j = k;
+										break;
+									}
+								}
+							}
+						}
+					} else {
+						continue;
+					}
+				}
+				int tmp = 0;
+				for (int j = n - 1; j >= n - cnt + 1; j--) {
+					for (int k = n - 1; k >= 0; k--) {
+						if (cloneMap.map[i][k] > 0) {
+							tmp = m.map[i][k];
+							cloneMap.map[i][k] = 0;
+							cloneMap.map[i][cnt] = tmp;
+							cloneMap.visited[i][k] = false;
+							cloneMap.visited[i][cnt] = true;
+							break;
+						}
+					}
+				}
+				countMax(cloneMap);				
+				q.add(cloneMap);
+			}
+
+			m = null;
+		}
+	}
+
+	public static void print() {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+
+	public static void countMax(Map m) {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				max = Math.max(max, m.map[i][j]);
+			}
+		}
+
+	}
+
+	public static class Map {
+		int[][] map = new int[20][20];
+		boolean[][] visited = new boolean[20][20];
+
+		public Map() {
+		}
+
+		public Map(int[][] map, boolean[][] visited) {
+			super();
+			this.map = map;
+			this.visited = visited;
+		}
+	}
+}
