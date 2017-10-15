@@ -214,10 +214,8 @@ public class P13460_Ref {
 				qu.offer(new Data(nrx, nry, nbx, nby, d.count+1)); //움직여진 현재 빨간구슬과 파란구슬 좌표 넣고 count 하나 증가
 			}
 		}
-		
 		System.out.println(-1);
 	}
-
 }
 
 class Data
