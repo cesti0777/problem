@@ -1,0 +1,41 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P12786 {
+	static int n;
+	static int k;
+	static int holeCnt;
+	static int holeHight;
+	static int[][] map = new int[20][200];
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		n = in.nextInt();
+		k = in.nextInt();
+
+		for(int j = 1; j < n; j += 2){
+			holeCnt = in.nextInt();
+			for(int i = 0; i < holeCnt; i++){
+				holeHight = in.nextInt();
+				for(int ii = 1; ii <= 20; ii++){
+					if(ii == holeHight){
+						continue;
+					}
+					map[ii][j] = 1;
+				}
+			}
+		}
+	}
+	
+	public static void print(int[][] arr){
+		for(int i = 0; i < 20; i++){
+			for(int j = 0; j < 2 * n; j++){
+				System.out.print(arr[i][j]);
+			}
+			System.out.println();
+		}
+	}
+
+}

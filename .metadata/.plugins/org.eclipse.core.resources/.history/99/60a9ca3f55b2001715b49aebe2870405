@@ -1,0 +1,146 @@
+package samsung.practice1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class P12786 {
+	static int n;
+	static int k;
+	static int holeCnt;
+	static int holeHight;
+	static int[][] map = new int[20][200];
+	static int min = 51;
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		n = in.nextInt();
+		k = in.nextInt();
+
+		//맵 입력
+		for(int j = 1; j < n * 2; j += 2){
+			holeCnt = in.nextInt();
+			//나무 세우기
+			for(int i = 0; i < 20; i++){
+				map[i][j] = 1;
+			}
+			//구멍 뚫기
+			for(int i = 0; i < holeCnt; i++){
+				holeHight = in.nextInt();
+				for(int ii = 1; ii <= 20; ii++){
+					if(ii == holeHight){
+						map[ii - 1][j] = 0;
+					}
+				}
+			}
+		}
+//		print(map);
+		
+		Queue<Location> q = new LinkedList<Location>();
+		
+		q.add(new Location(0, 0, 1, k, 0));
+		
+		while(!q.isEmpty()){
+			Location me = q.remove();
+			int mC = 0;
+			int mR = 0;
+			int curTree = me.curTree;
+			int curK = me.k;
+			int useT = me.useT;
+			int no = 0;
+			
+			if(curTree > n){
+				min = Math.min(min, useT);
+				continue;
+			}
+			
+			//O(제자리)
+			mC = me.mC;
+			mR = me.mR;
+			System.out.println(mR +" "+ mC);
+			if(map[mR][mC + 1] == 0){
+				q.add(new Location(mC + 2, mR, curTree + 1, curK, useT));
+			}else{
+				no++;
+			}
+			//A(위로 1)
+			mC = me.mC;
+			mR = me.mR + 1;
+			System.out.println(mR +" "+ mC);
+			if(mR < 20 && map[mR][mC + 1] == 0){
+				q.add(new Location(mC + 2, mR, curTree + 1, curK, useT));
+			}else{
+				no++;
+			}
+			//B(위로 2x현재높이)
+			mC = me.mC;
+			mR = me.mR + me.mR + 1;
+			System.out.println(mR +" "+ mC);
+			if(mR < 20 && map[mR][mC + 1] == 0){
+				q.add(new Location(mC + 2, mR, curTree + 1, curK, useT));
+			}else{
+				no++;
+			}
+			//C(아래로 1)
+			mC = me.mC;
+			mR = me.mR - 1;
+			System.out.println(mR +" "+ mC);
+			if(mR >= 0 && map[mR][mC + 1] == 0){
+				q.add(new Location(mC + 2, mR, curTree + 1, curK, useT));
+			}else{
+				no++;
+			}
+			//T(순간이동, 4가지 안되면 사용)
+			if(k > 0){
+				mC = me.mC;
+				mR = me.mR;
+				if(no == 4){
+					System.out.println(55555555);
+					for(int i = 0; i < 20; i++){
+						if(map[i][mC + 1] == 0){
+							q.add(new Location(mC + 2, i, curTree + 1, curK - 1, useT + 1));
+						}
+					}
+				}
+			}
+			
+//			if(curTree == 1){
+//				break;
+//			}
+		}//end while
+		System.out.println(min);
+	}
+	
+	
+	
+	
+	
+	public static void print(int[][] arr){
+		for(int i = 0; i < 20; i++){
+			for(int j = 0; j < 2 * n; j++){
+				System.out.print(arr[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
+	public static class Location{
+		int mC;
+		int mR;
+		int curTree;
+		int k;
+		int useT;
+		
+		public Location() {}
+		
+		public Location(int mC, int mR, int curTree, int k, int useT) {
+			super();
+			this.mC = mC;
+			this.mR = mR;
+			this.curTree = curTree;
+			this.k = k;
+			this.useT = useT;
+		}
+	}
+}
