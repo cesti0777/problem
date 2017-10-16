@@ -1,0 +1,68 @@
+package samsung.practice1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class P12786 {
+	static int n;
+	static int k;
+	static int holeCnt;
+	static int holeHight;
+	static int[][] map = new int[20][200];
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		n = in.nextInt();
+		k = in.nextInt();
+
+		//甘 涝仿
+		for(int j = 1; j < n * 2; j += 2){
+			holeCnt = in.nextInt();
+			//唱公 技快扁
+			for(int i = 0; i < 20; i++){
+				map[i][j] = 1;
+			}
+			//备港 墩扁
+			for(int i = 0; i < holeCnt; i++){
+				holeHight = in.nextInt();
+				for(int ii = 1; ii <= 20; ii++){
+					if(ii == holeHight){
+						map[ii - 1][j] = 0;
+					}
+				}
+			}
+		}
+		
+		Queue<Data> q = new LinkedList<Data>();
+		
+//		print(map);
+	}
+	
+	
+	
+	
+	
+	public static void print(int[][] arr){
+		for(int i = 0; i < 20; i++){
+			for(int j = 0; j < 2 * n; j++){
+				System.out.print(arr[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
+	public static class Data{
+		int rC;
+		int rR;
+		
+		public Data() {}
+		
+		public Data(int rC, int rR) {
+			super();
+			this.rC = rC;
+			this.rR = rR;
+		}
+	}
+}
