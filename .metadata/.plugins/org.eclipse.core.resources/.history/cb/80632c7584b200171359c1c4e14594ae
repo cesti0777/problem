@@ -34,17 +34,20 @@ public class P12786 {
 		}
 		print(map);
 
-		Queue<Location> q = new LinkedList<Location>();
+		Queue<Integer> q = new LinkedList<Integer>();
 
-		q.add(new Location(0, 0, 1, k, 0));
+		q.add(0);
+		q.add(0);
+		q.add(1);
+		q.add(k);
+		q.add(0);
 
 		while (!q.isEmpty()) {
-			Location me = q.remove();
-			int mC = me.mC;
-			int mR = me.mR;
-			int curTree = me.curTree;
-			int curK = me.k;
-			int useT = me.useT;
+			int mC = q.remove();
+			int mR = q.remove();
+			int curTree = q.remove();
+			int curK = q.remove();
+			int useT = q.remove();
 			int no = 0;
 
 			if (curTree > n) {
@@ -55,14 +58,22 @@ public class P12786 {
 			// O(제자리)
 			if (visited[mR][mC + 1] != true && map[mR][mC + 1] == 0) {
 				visited[mR][mC + 1] = true;
-				q.add(new Location(mC + 2, mR, curTree + 1, curK, useT));
+				q.add(mC + 2);
+				q.add(mR);
+				q.add(curTree + 1);
+				q.add(curK);
+				q.add(useT);
 			} else {
 				no++;
 			}
 			// A(위로 1)
 			if (mR + 1 < 20 && visited[mR + 1][mC + 1] != true && map[mR + 1][mC + 1] == 0) {
 				visited[mR + 1][mC + 1] = true;
-				q.add(new Location(mC + 2, mR + 1, curTree + 1, curK, useT));
+				q.add(mC + 2);
+				q.add(mR + 1);
+				q.add(curTree + 1);
+				q.add(curK);
+				q.add(useT);
 			} else {
 				no++;
 			}
@@ -70,35 +81,48 @@ public class P12786 {
 			if (mR + mR + 1 >= 20) {
 				if (visited[19][mC + 1] != true && map[19][mC + 1] == 0) {
 					visited[19][mC + 1] = true;
-					q.add(new Location(mC + 2, 19, curTree + 1, curK, useT));
+					q.add(mC + 2);
+					q.add(19);
+					q.add(curTree + 1);
+					q.add(curK);
+					q.add(useT);
 				}
 			} else if (visited[mR + mR + 1][mC + 1] != true && map[mR + mR + 1][mC + 1] == 0) {
 				visited[mR + mR + 1][mC + 1] = true;
-				q.add(new Location(mC + 2, mR + mR + 1, curTree + 1, curK, useT));
+				q.add(mC + 2);
+				q.add(mR + mR + 1);
+				q.add(curTree + 1);
+				q.add(curK);
+				q.add(useT);
 			} else {
 				no++;
 			}
 			// C(아래로 1)
 			if (mR - 1 >= 0 && visited[mR - 1][mC + 1] != true && map[mR - 1][mC + 1] == 0) {
 				visited[mR - 1][mC + 1] = true;
-				q.add(new Location(mC + 2, mR - 1, curTree + 1, curK, useT));
+				q.add(mC + 2);
+				q.add(mR - 1);
+				q.add(curTree + 1);
+				q.add(curK);
+				q.add(useT);
 			} else {
 				no++;
 			}
 			// T(순간이동, 4가지 안되면 사용)
 			if (curK > 0) {
-				mC = me.mC;
-				mR = me.mR;
 				if (no == 4) {
 					for (int i = 0; i < 20; i++) {
 						if (visited[i][mC + 1] != true && map[i][mC + 1] == 0) {
 							visited[i][mC + 1] = true;
-							q.add(new Location(mC + 2, i, curTree + 1, curK - 1, useT + 1));
+							q.add(mC + 2);
+							q.add(i);
+							q.add(curTree + 1);
+							q.add(curK - 1);
+							q.add(useT + 1);
 						}
 					}
 				}
 			}
-			me = null;
 		} // end while
 
 		// 최종 출력
@@ -139,18 +163,8 @@ public class P12786 {
 	}
 }
 
+//10
 //50
-//50
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
 //10 1 2 4 6 7 12 14 15 17 20
 //10 2 4 6 7 9 12 15 18 19 20
 //10 1 2 4 6 7 12 14 15 17 20

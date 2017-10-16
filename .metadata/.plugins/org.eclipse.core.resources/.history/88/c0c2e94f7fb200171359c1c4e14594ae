@@ -54,14 +54,12 @@ public class P12786 {
 
 			// O(제자리)
 			if (visited[mR][mC + 1] != true && map[mR][mC + 1] == 0) {
-				visited[mR][mC + 1] = true;
 				q.add(new Location(mC + 2, mR, curTree + 1, curK, useT));
 			} else {
 				no++;
 			}
 			// A(위로 1)
 			if (mR + 1 < 20 && visited[mR + 1][mC + 1] != true && map[mR + 1][mC + 1] == 0) {
-				visited[mR + 1][mC + 1] = true;
 				q.add(new Location(mC + 2, mR + 1, curTree + 1, curK, useT));
 			} else {
 				no++;
@@ -69,18 +67,15 @@ public class P12786 {
 			// B(위로 2x현재높이, 최대 20)
 			if (mR + mR + 1 >= 20) {
 				if (visited[19][mC + 1] != true && map[19][mC + 1] == 0) {
-					visited[19][mC + 1] = true;
 					q.add(new Location(mC + 2, 19, curTree + 1, curK, useT));
 				}
 			} else if (visited[mR + mR + 1][mC + 1] != true && map[mR + mR + 1][mC + 1] == 0) {
-				visited[mR + mR + 1][mC + 1] = true;
 				q.add(new Location(mC + 2, mR + mR + 1, curTree + 1, curK, useT));
 			} else {
 				no++;
 			}
 			// C(아래로 1)
 			if (mR - 1 >= 0 && visited[mR - 1][mC + 1] != true && map[mR - 1][mC + 1] == 0) {
-				visited[mR - 1][mC + 1] = true;
 				q.add(new Location(mC + 2, mR - 1, curTree + 1, curK, useT));
 			} else {
 				no++;
@@ -91,8 +86,7 @@ public class P12786 {
 				mR = me.mR;
 				if (no == 4) {
 					for (int i = 0; i < 20; i++) {
-						if (visited[i][mC + 1] != true && map[i][mC + 1] == 0) {
-							visited[i][mC + 1] = true;
+						if (map[i][mC + 1] == 0) {
 							q.add(new Location(mC + 2, i, curTree + 1, curK - 1, useT + 1));
 						}
 					}
@@ -139,25 +133,10 @@ public class P12786 {
 	}
 }
 
-//50
-//50
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
-//10 1 2 4 6 7 12 14 15 17 20
-//10 2 4 6 7 9 12 15 18 19 20
+5
+2
+1 1
+1 6
+1 2
+1 6
+1 1
