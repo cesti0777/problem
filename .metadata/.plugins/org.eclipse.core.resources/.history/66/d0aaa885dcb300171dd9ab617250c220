@@ -1,0 +1,41 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P14501_kj {
+   static int n; // 퇴사일
+   static int[] day = new int[16]; // [퇴사일][소요일]
+   static int[] money = new int[16];
+   static int max;
+
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      n = sc.nextInt();
+      for (int i = 1; i <= n; i++) {
+         day[i] = sc.nextInt();
+         money[i] = sc.nextInt();
+      }
+      for (int i = 1; i <= n; i++) {
+         cal(i, 0);
+      }
+      // cal(1, 0);
+      System.out.println(max);
+   }
+
+   public static void cal(int nowday, int sum) {
+      if (nowday <= n) {
+         if (nowday + day[nowday] == n + 1) { // 마지막날 일할수있을때
+            if (sum + money[nowday] > max) { // 퇴사일에 도달했고, 최대금액 저장
+               max = sum + money[nowday];
+            }
+         } else if (nowday + day[nowday] > n + 1) {
+            if (sum > max) { // 퇴사일에 도달했고, 최대금액 저장
+               max = sum;
+            }
+         } else if (nowday + day[nowday] <= n + 1) {
+            cal(nowday + day[nowday], sum + money[nowday]);
+         }
+         cal(nowday + 1, sum);
+      }
+   }
+}

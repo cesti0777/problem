@@ -25,10 +25,7 @@ public class P14501 {
 
 		Queue<Integer> q = new LinkedList<Integer>();
 		for(int i = 0; i < n; i++){
-			q.add(i);//day ÀÎµ¦½º
-			q.add(day[i][0]);//day ½Ã°£
-			q.add(day[i][1]);//day ±Þ¿©
-			q.add(0);//ÃÑ ±Þ¿©
+			q.add(i); q.add(day[i][0]); q.add(day[i][1]);  q.add(0);
 		}
 		
 		while(!q.isEmpty()){
@@ -44,10 +41,7 @@ public class P14501 {
 			totalPay += p;
 			
 			for(int i = dNum + t; i < n; i++){
-				q.add(i);
-				q.add(day[i][0]);
-				q.add(day[i][1]);
-				q.add(totalPay);
+				q.add(i); q.add(day[i][0]); q.add(day[i][1]); q.add(totalPay);
 			}
 			max = Math.max(max, totalPay);
 		}

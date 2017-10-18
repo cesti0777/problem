@@ -1,0 +1,38 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P13460_new {
+	static int r;
+	static int c;
+	static char map[][] = new char[10][10];
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		r = in.nextInt();
+		c = in.nextInt();
+		in.nextLine();
+		
+		for(int i = 0; i < r; i++){
+			String line = in.nextLine();
+			for(int j = 0; j < c; j++){
+				map[i][j] = line.charAt(j);
+			}
+		}
+		
+		print(map);
+	}
+	
+	
+	
+	public static void print(char[][] arr){
+		System.out.println();
+		for(int i = 0; i < r; i++){
+			for(int j = 0; j < c; j++){
+				System.out.print(arr[i][j]);
+			}
+			System.out.println();
+		}
+	}
+}

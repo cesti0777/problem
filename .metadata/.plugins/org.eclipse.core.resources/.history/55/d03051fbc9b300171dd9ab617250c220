@@ -1,0 +1,18 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P13460_new {
+	static int r;
+	static int c;
+	
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		r = in.nextInt();
+		c = in.nextInt();
+		
+	}
+
+}
