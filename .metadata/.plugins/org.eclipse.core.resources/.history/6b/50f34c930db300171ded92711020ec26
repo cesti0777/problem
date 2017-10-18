@@ -1,0 +1,18 @@
+package samsung.practice1;
+
+import java.util.Scanner;
+
+public class P9328 {
+	static int tCnt;
+	static int r;
+	static int c;
+	static int[][][] map = new int[100][104][104]; 
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		tCnt = in.nextInt();
+		r = in.nextInt();
+		c = in.nextInt();
+	}
+
+}
