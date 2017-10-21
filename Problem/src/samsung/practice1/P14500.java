@@ -47,6 +47,7 @@ public class P14500 {
 		}
 		System.out.println(max);
 	}
+	
 	//けけけけ
 	public static void count1(int i,int j){
 		int count = 0;
