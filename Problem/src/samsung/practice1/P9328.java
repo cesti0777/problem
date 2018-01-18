@@ -31,6 +31,7 @@ public class P9328 {
 					}
 				}
 			}
+			
 			//╦й ют╥б
 			in.nextLine();
 			for(int i = 2; i < r[m][0] + 2; i++){
