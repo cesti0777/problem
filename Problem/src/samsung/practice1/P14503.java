@@ -58,10 +58,10 @@ public class P14503 {
 						return;
 					}
 				case 3: // ¼­(ÁÂ)
-					if (map[r][c + 1] == 0) {
+					if (map[r][c + 1] == 0) {					
 						c++;
 						no = 0;
-						break;
+						break;					
 					} else {
 						System.out.println(cnt);
 						return;
