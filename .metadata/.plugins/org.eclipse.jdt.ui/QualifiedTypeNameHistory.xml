@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.naming.CommunicationException"/>
+<<<<<<< HEAD
+=======
 <fullyQualifiedTypeName name="samsung.practice1.P12786.Location"/>
 <fullyQualifiedTypeName name="samsung.practice1.P13460_new.Data"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 <fullyQualifiedTypeName name="java.util.Queue"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="java.lang.Enum"/>
 <fullyQualifiedTypeName name="zum.Solution"/>
 <fullyQualifiedTypeName name="java.lang.Character"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

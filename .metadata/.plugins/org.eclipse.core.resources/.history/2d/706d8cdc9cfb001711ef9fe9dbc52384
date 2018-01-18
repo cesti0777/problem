@@ -1,0 +1,60 @@
+package study;
+
+import java.util.Scanner;
+
+public class Hw1 {
+	
+	static int testCaseCnt;
+	static int n;
+	static int[][] num = new int[2][20];
+	static int[] idx = new int[20];
+	static long answer;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		testCaseCnt = in.nextInt();
+
+		for(int testCase = 1; testCase <= testCaseCnt; testCase++){
+			init();
+			
+			n = in.nextInt();
+			
+			for(int i = 0; i < n; i++){
+				idx[i] = i;
+			}
+			
+			for(int i = 0; i < n; i++){
+				num[0][i] = in.nextInt();
+				num[1][i] = in.nextInt();
+			}
+			
+			execute();
+			
+			System.out.println("#" + testCase + " " + answer);
+			
+		}
+	}
+	
+	public static void init(){
+		n = 0;
+		answer = Long.MAX_VALUE;
+	}
+	
+	public static void execute() {
+
+	}
+
+	// 자바에서는 포인터가 없기 때문에 아래와 같이, 인덱스 i와 j를 통해 바꿔줌.
+	public static void swap(int[] arr, int i, int j) {
+		
+	}
+
+	public static void print(int[] arr, int k) {
+
+	
+	}
+}
+
+
+

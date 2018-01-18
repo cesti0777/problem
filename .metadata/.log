@@ -9124,6 +9124,9 @@ org.eclipse.recommenders.utils.Logs$LogTraceException
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
+!SESSION 2017-10-27 21:17:55.185 -----------------------------------------------
+=======
 >>>>>>> 82a03542472da297b30d6b381a04311f20942e4a
 
 !ENTRY org.eclipse.ui.workbench 4 2 2017-10-18 14:29:36.487
@@ -9198,6 +9201,7 @@ java.lang.OutOfMemoryError: Java heap space
 	at org.eclipse.jdt.internal.core.search.processing.JobManager.run(JobManager.java:377)
 	at java.lang.Thread.run(Thread.java:748)
 !SESSION 2017-10-18 14:30:22.945 -----------------------------------------------
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 eclipse.buildId=4.6.3.M20170301-0400
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
@@ -9205,14 +9209,24 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.egit.ui 2 0 2017-10-27 21:18:05.144
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\shine'. If this is
+=======
 !ENTRY org.eclipse.egit.ui 2 0 2017-10-18 14:30:50.820
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\JB'. If this is
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-10-27 21:18:05.390
+=======
 !ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-10-18 14:30:51.186
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.4.v20170307-1435
 !STACK 0
 com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
@@ -9233,6 +9247,22 @@ Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4
 	at com.google.gson.Gson.fromJson(Gson.java:803)
 	... 8 more
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.jface.text 2 0 2017-10-27 21:18:26.563
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-10-27 21:18:26.564
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-10-27 21:19:31.681
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-10-27 21:19:31.712
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 11 2017-10-27 21:19:32.141
+!MESSAGE The model index service was accessed either before it started or after it finished running.
+=======
 !ENTRY org.eclipse.jface.text 2 0 2017-10-18 14:52:04.454
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
 
@@ -9266,10 +9296,30 @@ Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4
   [*] C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar
   [*] C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar
 
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !STACK 0
 org.eclipse.recommenders.utils.Logs$LogTraceException
 	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
 	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+<<<<<<< HEAD
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:126)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelIndex.suggest(EclipseModelIndex.java:212)
+	at org.eclipse.recommenders.models.SimpleModelProvider.acquireModel(SimpleModelProvider.java:70)
+	at org.eclipse.recommenders.models.PoolingModelProvider.access$0(PoolingModelProvider.java:1)
+	at org.eclipse.recommenders.models.PoolingModelProvider$ModelPoolFactoryMediator.makeObject(PoolingModelProvider.java:96)
+	at org.eclipse.recommenders.models.PoolingModelProvider$ModelPoolFactoryMediator.makeObject(PoolingModelProvider.java:1)
+	at org.apache.commons.pool.impl.GenericKeyedObjectPool.borrowObject(GenericKeyedObjectPool.java:1220)
+	at org.eclipse.recommenders.models.PoolingModelProvider.acquireModel(PoolingModelProvider.java:67)
+	at org.eclipse.recommenders.internal.calls.rcp.RcpCallModelProvider.acquireModel(RcpCallModelProvider.java:65)
+	at org.eclipse.recommenders.internal.calls.rcp.RcpCallModelProvider.acquireModel(RcpCallModelProvider.java:1)
+	at org.eclipse.recommenders.internal.models.rcp.PrefetchModelArchiveJob.run(PrefetchModelArchiveJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-27 21:19:59.321
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.needsRebuild(ProjectTypesIndex.java:169)
 	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.startUp(ProjectTypesIndex.java:122)
 	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
@@ -9280,6 +9330,7 @@ org.eclipse.recommenders.utils.Logs$LogTraceException
 !MESSAGE Error logged from Debug Core: 
 !STACK 1
 org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.core.LaunchManager.createDebugException(LaunchManager.java:925)
 	at org.eclipse.debug.internal.core.LaunchManager.throwException(LaunchManager.java:2474)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1378)
@@ -9289,6 +9340,11 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.debug.internal.core.LaunchManager.verifyConfigurations(LaunchManager.java:2488)
 	at org.eclipse.debug.internal.core.LaunchManager.getAllLaunchConfigurations(LaunchManager.java:1145)
 	at org.eclipse.debug.internal.core.LaunchManager.getLaunchConfigurations(LaunchManager.java:1428)
+<<<<<<< HEAD
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:780)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:494)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:178)
+=======
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreHistory(LaunchConfigurationManager.java:569)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreLaunchHistory(LaunchConfigurationManager.java:538)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.loadLaunchHistories(LaunchConfigurationManager.java:1066)
@@ -9296,12 +9352,18 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getFilteredLastLaunch(LaunchConfigurationManager.java:361)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launchLast(ContextRunner.java:126)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:193)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:98)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runInternal(RelaunchLastAction.java:143)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+=======
 	at sun.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -9327,8 +9389,15 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1126)
 	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1849)
 	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5172)
+<<<<<<< HEAD
+	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:454)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5123)
+=======
 	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
 	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
 	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
 	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
@@ -9370,9 +9439,15 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
 	at org.eclipse.debug.internal.core.LaunchManager.createInfoFromXML(LaunchManager.java:953)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1371)
+<<<<<<< HEAD
+	... 69 more
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2017-10-27 21:19:59.327
+!MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 	... 70 more
 !SUBENTRY 1 org.eclipse.debug.core 4 5012 2017-10-18 15:03:09.539
 !MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !STACK 0
 org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다.
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
@@ -9397,6 +9472,11 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.debug.internal.core.LaunchManager.verifyConfigurations(LaunchManager.java:2488)
 	at org.eclipse.debug.internal.core.LaunchManager.getAllLaunchConfigurations(LaunchManager.java:1145)
 	at org.eclipse.debug.internal.core.LaunchManager.getLaunchConfigurations(LaunchManager.java:1428)
+<<<<<<< HEAD
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:780)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:494)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:178)
+=======
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreHistory(LaunchConfigurationManager.java:569)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreLaunchHistory(LaunchConfigurationManager.java:538)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.loadLaunchHistories(LaunchConfigurationManager.java:1066)
@@ -9404,12 +9484,18 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getFilteredLastLaunch(LaunchConfigurationManager.java:361)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launchLast(ContextRunner.java:126)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:193)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:98)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runInternal(RelaunchLastAction.java:143)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+=======
 	at sun.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -9435,8 +9521,15 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1126)
 	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1849)
 	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5172)
+<<<<<<< HEAD
+	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:454)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5123)
+=======
 	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
 	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
 	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
 	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
@@ -9461,7 +9554,11 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+<<<<<<< HEAD
+!SESSION 2017-10-27 22:55:22.137 -----------------------------------------------
+=======
 !SESSION 2017-10-19 15:30:46.603 -----------------------------------------------
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 eclipse.buildId=4.6.3.M20170301-0400
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
@@ -9469,14 +9566,24 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.egit.ui 2 0 2017-10-27 22:55:31.328
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\shine'. If this is
+=======
 !ENTRY org.eclipse.egit.ui 2 0 2017-10-19 15:31:13.484
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\JB'. If this is
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-10-27 22:55:31.445
+=======
 !ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-10-19 15:31:14.984
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.4.v20170307-1435
 !STACK 0
 com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
@@ -9497,6 +9604,12 @@ Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4
 	at com.google.gson.Gson.fromJson(Gson.java:803)
 	... 8 more
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.debug.core 4 125 2017-10-27 22:55:44.211
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 !ENTRY org.eclipse.jface.text 2 0 2017-10-19 15:37:37.831
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
 
@@ -9526,6 +9639,7 @@ org.eclipse.recommenders.utils.Logs$LogTraceException
 !MESSAGE Error logged from Debug Core: 
 !STACK 1
 org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.core.LaunchManager.createDebugException(LaunchManager.java:925)
 	at org.eclipse.debug.internal.core.LaunchManager.throwException(LaunchManager.java:2474)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1378)
@@ -9543,7 +9657,12 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+=======
 	at sun.reflect.GeneratedMethodAccessor38.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -9572,7 +9691,11 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:454)
 	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
 	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+<<<<<<< HEAD
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+=======
 	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5123)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
 	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
 	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
@@ -9614,9 +9737,15 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
 	at org.eclipse.debug.internal.core.LaunchManager.createInfoFromXML(LaunchManager.java:953)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1371)
+<<<<<<< HEAD
+	... 69 more
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2017-10-27 22:55:44.213
+!MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 	... 68 more
 !SUBENTRY 1 org.eclipse.debug.core 4 5012 2017-10-19 16:17:34.519
 !MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !STACK 0
 org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다.
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
@@ -9649,7 +9778,12 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+=======
 	at sun.reflect.GeneratedMethodAccessor38.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -9678,7 +9812,11 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:454)
 	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
 	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+<<<<<<< HEAD
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+=======
 	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5123)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
 	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
 	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
@@ -9703,7 +9841,11 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+<<<<<<< HEAD
+!SESSION 2017-11-16 23:00:07.112 -----------------------------------------------
+=======
 !SESSION 2017-10-20 13:01:46.865 -----------------------------------------------
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 eclipse.buildId=4.6.3.M20170301-0400
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
@@ -9711,14 +9853,24 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.egit.ui 2 0 2017-11-16 23:00:18.083
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\shine'. If this is
+=======
 !ENTRY org.eclipse.egit.ui 2 0 2017-10-20 13:02:16.847
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\JB'. If this is
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-11-16 23:00:18.489
+=======
 !ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-10-20 13:02:18.183
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.4.v20170307-1435
 !STACK 0
 com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
@@ -9738,6 +9890,95 @@ Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
 	at com.google.gson.Gson.fromJson(Gson.java:803)
 	... 8 more
+<<<<<<< HEAD
+!SESSION 2018-01-15 21:38:11.739 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-15 21:38:29.041
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\shine'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2018-01-15 21:38:29.276
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.4.v20170307-1435
+!STACK 0
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.Gson.fromJson(Gson.java:818)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:102)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:111)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.loadConfiguration(IO.java:75)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:121)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:519)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1209)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 8 more
+!SESSION 2018-01-17 22:13:41.366 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-17 22:13:55.258
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\shine'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2018-01-17 22:13:55.441
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.4.v20170307-1435
+!STACK 0
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.Gson.fromJson(Gson.java:818)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:102)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:111)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.loadConfiguration(IO.java:75)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:121)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:519)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1209)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 8 more
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-17 22:14:38.247
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-17 22:14:38.270
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-17 22:19:58.998
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-01-17 22:19:58.999
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.debug.core 4 125 2018-01-17 22:50:59.553
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 
 !ENTRY org.eclipse.jface.text 2 0 2017-10-20 13:46:38.272
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
@@ -9774,6 +10015,7 @@ org.eclipse.recommenders.utils.Logs$LogTraceException
 !MESSAGE Error logged from Debug Core: 
 !STACK 1
 org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.core.LaunchManager.createDebugException(LaunchManager.java:925)
 	at org.eclipse.debug.internal.core.LaunchManager.throwException(LaunchManager.java:2474)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1378)
@@ -9791,7 +10033,11 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.GeneratedMethodAccessor39.invoke(Unknown Source)
+=======
 	at sun.reflect.GeneratedMethodAccessor70.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -9863,8 +10109,13 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소
 	at org.eclipse.debug.internal.core.LaunchManager.createInfoFromXML(LaunchManager.java:953)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1371)
 	... 68 more
+<<<<<<< HEAD
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2018-01-17 22:50:59.557
+!MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 !SUBENTRY 1 org.eclipse.debug.core 4 5012 2017-10-20 14:07:52.055
 !MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !STACK 0
 org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다.
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
@@ -9897,7 +10148,11 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.GeneratedMethodAccessor39.invoke(Unknown Source)
+=======
 	at sun.reflect.GeneratedMethodAccessor70.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -9951,7 +10206,31 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+<<<<<<< HEAD
+
+!ENTRY org.eclipse.recommenders.rcp 4 18 2018-01-18 01:38:33.074
+!MESSAGE Failed to resolve selection in ‘=Problem/src<study{Hw1.java’ at offset 1,428.
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromTypeRootInEditor(JavaElementSelections.java:164)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromEditor(JavaElementSelections.java:119)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromEditor(JavaElementSelections.java:102)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:108)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+!SESSION 2018-01-18 12:04:51.998 -----------------------------------------------
+=======
 !SESSION 2017-10-21 13:19:44.318 -----------------------------------------------
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 eclipse.buildId=4.6.3.M20170301-0400
 java.version=1.8.0_131
 java.vendor=Oracle Corporation
@@ -9959,14 +10238,24 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.egit.ui 2 0 2018-01-18 12:05:03.625
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\shine'. If this is
+=======
 !ENTRY org.eclipse.egit.ui 2 0 2017-10-21 13:20:17.925
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\JB'. If this is
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2018-01-18 12:05:03.848
+=======
 !ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2017-10-21 13:20:19.008
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.4.v20170307-1435
 !STACK 0
 com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
@@ -9987,6 +10276,12 @@ Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4
 	at com.google.gson.Gson.fromJson(Gson.java:803)
 	... 8 more
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.debug.core 4 125 2018-01-18 12:24:49.720
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 !ENTRY org.eclipse.jface.text 2 0 2017-10-21 14:00:21.524
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
 
@@ -10003,6 +10298,7 @@ Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4
 !MESSAGE Error logged from Debug Core: 
 !STACK 1
 org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.core.LaunchManager.createDebugException(LaunchManager.java:925)
 	at org.eclipse.debug.internal.core.LaunchManager.throwException(LaunchManager.java:2474)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1378)
@@ -10012,6 +10308,11 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.debug.internal.core.LaunchManager.verifyConfigurations(LaunchManager.java:2488)
 	at org.eclipse.debug.internal.core.LaunchManager.getAllLaunchConfigurations(LaunchManager.java:1145)
 	at org.eclipse.debug.internal.core.LaunchManager.getLaunchConfigurations(LaunchManager.java:1428)
+<<<<<<< HEAD
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:780)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:494)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:178)
+=======
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreHistory(LaunchConfigurationManager.java:569)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreLaunchHistory(LaunchConfigurationManager.java:538)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.loadLaunchHistories(LaunchConfigurationManager.java:1066)
@@ -10019,12 +10320,17 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getFilteredLastLaunch(LaunchConfigurationManager.java:361)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launchLast(ContextRunner.java:126)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:193)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:98)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runInternal(RelaunchLastAction.java:143)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.GeneratedMethodAccessor39.invoke(Unknown Source)
+=======
 	at sun.reflect.GeneratedMethodAccessor61.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -10050,8 +10356,15 @@ org.eclipse.debug.core.DebugException: org.xml.sax.SAXParseException; lineNumber
 	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1126)
 	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1849)
 	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5172)
+<<<<<<< HEAD
+	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:454)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5123)
+=======
 	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
 	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
 	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
 	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
@@ -10093,9 +10406,15 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
 	at org.eclipse.debug.internal.core.LaunchManager.createInfoFromXML(LaunchManager.java:953)
 	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1371)
+<<<<<<< HEAD
+	... 68 more
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2018-01-18 12:24:49.721
+!MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+=======
 	... 70 more
 !SUBENTRY 1 org.eclipse.debug.core 4 5012 2017-10-21 14:41:53.051
 !MESSAGE org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다. occurred while reading launch configuration file: D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.debug.core\.launches\Program.launch.
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 !STACK 0
 org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠는 올바른 형식의 문자 데이터 또는 마크업으로 구성되어야 합니다.
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
@@ -10120,6 +10439,11 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.debug.internal.core.LaunchManager.verifyConfigurations(LaunchManager.java:2488)
 	at org.eclipse.debug.internal.core.LaunchManager.getAllLaunchConfigurations(LaunchManager.java:1145)
 	at org.eclipse.debug.internal.core.LaunchManager.getLaunchConfigurations(LaunchManager.java:1428)
+<<<<<<< HEAD
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:780)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:494)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:178)
+=======
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreHistory(LaunchConfigurationManager.java:569)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreLaunchHistory(LaunchConfigurationManager.java:538)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.loadLaunchHistories(LaunchConfigurationManager.java:1066)
@@ -10127,12 +10451,17 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getFilteredLastLaunch(LaunchConfigurationManager.java:361)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launchLast(ContextRunner.java:126)
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:193)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:98)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runInternal(RelaunchLastAction.java:143)
 	at org.eclipse.debug.ui.actions.RelaunchLastAction.runWithEvent(RelaunchLastAction.java:137)
 	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:291)
 	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+<<<<<<< HEAD
+	at sun.reflect.GeneratedMethodAccessor39.invoke(Unknown Source)
+=======
 	at sun.reflect.GeneratedMethodAccessor61.invoke(Unknown Source)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
@@ -10158,8 +10487,15 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1126)
 	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1849)
 	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5172)
+<<<<<<< HEAD
+	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:454)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5123)
+=======
 	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4831)
 	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
 	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
 	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
@@ -10184,6 +10520,8 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; 요소 콘텐츠�
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+<<<<<<< HEAD
+=======
 !SESSION 2017-10-21 20:20:16.971 -----------------------------------------------
 eclipse.buildId=4.6.3.M20170301-0400
 java.version=1.8.0_131
@@ -10219,6 +10557,7 @@ Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
 	at com.google.gson.Gson.fromJson(Gson.java:803)
 	... 8 more
+<<<<<<< HEAD
 !SESSION 2017-10-30 19:07:15.699 -----------------------------------------------
 eclipse.buildId=4.6.3.M20170301-0400
 java.version=1.8.0_131
@@ -11587,3 +11926,6 @@ org.eclipse.jgit.errors.LockFailedException: Cannot lock D:\0.swStudy\Problem\.g
 	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
 	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:86)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+=======
+>>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
+>>>>>>> 2aca443a6a0075c6fc596ec34a5a3f6f150cd57b
