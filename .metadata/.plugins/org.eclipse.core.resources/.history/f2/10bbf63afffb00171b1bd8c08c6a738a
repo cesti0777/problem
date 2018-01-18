@@ -1,0 +1,61 @@
+package samsung.practice1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class P14501 {
+	
+	static int n;
+	static int[][] day = new int[15][2];
+	static int max;
+
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		
+		//day 갯수 입력
+		n = in.nextInt();
+		
+		//day 정보 입력
+		for(int i = 0; i < n; i++){
+			day[i][0] = in.nextInt();
+			day[i][1] = in.nextInt();
+		}
+
+		Queue<Integer> q = new LinkedList<Integer>();
+		for(int i = 0; i < n; i++){//상담정보들 큐에 넣기
+			q.add(i);//day 인덱스
+			q.add(day[i][0]);//day 시간
+			q.add(day[i][1]);//day 급여
+			q.add(0);//총 급여
+		}
+		
+		int dIdx = 0;
+		int t = 0;
+		int p = 0;
+		int totalPay = 0;
+		while(!q.isEmpty()){
+			
+			dIdx = q.remove();
+			t = q.remove();
+			p = q.remove();
+			totalPay = q.remove();
+			
+			if(dIdx + t > n){//퇴사일보다 초과되는 알바 pass
+				max = Math.max(max, totalPay);
+				continue;
+			}
+			
+			totalPay += p;
+			
+			for(int i = dIdx + t; i < n; i++){//이어서 할 수 있는 알바정보와 누적급여 큐에 넣기
+				q.add(i);
+				q.add(day[i][0]);
+				q.add(day[i][1]);
+				q.add(totalPay);
+			}
+		}
+		System.out.println(max);
+	}
+}
