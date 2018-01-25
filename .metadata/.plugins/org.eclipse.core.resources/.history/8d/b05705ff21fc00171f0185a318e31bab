@@ -1,0 +1,60 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE2001 {
+
+	static int testCaseCnt;
+	static int n;
+	static int m;
+	static int[][] map = new int[15][15];
+	static long answer;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+			init();
+
+			n = in.nextInt();
+			m = in.nextInt();
+
+			for (int i = 0; i < n; i++) {
+				for(int j = 0; j < n; j++){
+					map[i][j] = in.nextInt();
+				}
+			}
+
+			execute();
+
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void init() {
+		n = 0;
+		m = 0;
+		answer = 0;
+	}
+
+	public static void execute() {
+		
+		for(int i = 0; i < n - m; i++){
+			for(int j = 0; j < n - m; j++){
+				int sum = 0;
+				for(int p = i; p < i + m; p++){
+					for(int q = j; q < j + m; q++){
+						sum += map[p][q];
+					}
+				}
+				answer = Math.max(answer, sum);
+			}
+			
+		}
+	}
+
+}
+
+

@@ -67,6 +67,3 @@ public class SE1494 {
 	}
 }
 
-
-
-

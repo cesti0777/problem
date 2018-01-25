@@ -1,0 +1,54 @@
+package study;
+
+import java.util.*;
+
+public class BJ14888 {
+
+	static int N;
+	static int[] number;
+	static int[] op = new int[4];
+	static int min = Integer.MAX_VALUE; // 최소값
+	static int max = Integer.MIN_VALUE; // 최대값
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		N = sc.nextInt();
+		number = new int[N];
+		for (int i = 0; i < N; i++) { // 숫자입력
+			number[i] = sc.nextInt();
+		}
+		for (int i = 0; i < 4; i++) { // 연산자 입력
+			op[i] = sc.nextInt();
+		}
+		dfs(op[0], op[1], op[2], op[3], 0, number[0]);
+		System.out.println(max);
+		System.out.println(min);
+		System.out.println(Integer.MAX_VALUE);
+
+	}
+
+	public static void dfs(int plus, int minus, int multi, int divide, int num, int result) {
+		if (num == N - 1) { // 연산자의수가 숫자-1하고 같아졌을때
+			if (max <= result) // 최대값보다 크다면
+				max = result;
+			if (min > result) // 최소값보다 작다면
+				min = result;
+		}
+
+		if (plus > 0) { // 더하기 연산이 있을때
+			dfs(plus - 1, minus, multi, divide, num + 1, result + number[num + 1]);
+		} // 연산자 하나 쓰고, 연산자의수 하나 증가
+		if (minus > 0) { // 빼기 연산이 있을때
+			dfs(plus, minus - 1, multi, divide, num + 1, result - number[num + 1]);
+		}
+		if (multi > 0) { // 곱하기 연산이 있을때
+			dfs(plus, minus, multi - 1, divide, num + 1, result * number[num + 1]);
+		}
+		if (divide > 0) { // 나누기 연산이 있을때
+			dfs(plus, minus, multi, divide - 1, num + 1, result / number[num + 1]);
+		}
+
+	}
+
+}

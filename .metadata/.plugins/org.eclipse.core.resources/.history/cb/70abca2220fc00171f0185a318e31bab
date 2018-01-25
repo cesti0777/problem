@@ -1,0 +1,58 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE2001 {
+
+	static int testCaseCnt;
+	static int n;
+	static int m;
+	static int[][] map = new int[15][15];
+	static long answer;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+			init();
+
+			n = in.nextInt();
+			m = in.nextInt();
+
+			for (int i = 0; i < n; i++) {
+				for(int j = ){
+					
+				}
+			}
+
+			execute(0, 0);
+
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void init() {
+		n = 0;
+		m = 0;
+		answer = 0;
+	}
+
+	public static void execute(int depth, int idx) {
+
+		if (depth == n / 2) {//지렁이 n/2마리 고정했다면
+			cal();//백터합 계산
+			return;
+		}
+
+		for (int i = idx; i < n; i++) {
+			if (visited[i] == false) {//고정 안된 지렁이라면
+				visited[i] = true;//visited에 고정할 지렁이 표시
+				execute(depth + 1, idx + 1);//다음 고정할 지렁이 찾아서 고정
+				visited[i] = false;//visited에 고정했던 지렁이 풀어줌
+			}
+		}
+	}
+
+}

@@ -24,16 +24,12 @@ public class P14501 {
 		}
 
 		Queue<Integer> q = new LinkedList<Integer>();
-<<<<<<< HEAD
 		for(int i = 0; i < n; i++){//상담정보들 큐에 넣기
 			q.add(i);//day 인덱스
 			q.add(day[i][0]);//상담시간
 			q.add(day[i][1]);//상담급여
 			q.add(0);//총 급여
-=======
-		for(int i = 0; i < n; i++){
-			q.add(i); q.add(day[i][0]); q.add(day[i][1]);  q.add(0);
->>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
+
 		}
 		
 		while(!q.isEmpty()){
@@ -48,16 +44,11 @@ public class P14501 {
 			
 			totalPay += p;
 			
-<<<<<<< HEAD
 			for(int i = dIdx + t; i < n; i++){//이어서 할 수 있는 상담정보와 누적급여 큐에 넣기
 				q.add(i);
 				q.add(day[i][0]);
 				q.add(day[i][1]);
 				q.add(totalPay);
-=======
-			for(int i = dNum + t; i < n; i++){
-				q.add(i); q.add(day[i][0]); q.add(day[i][1]); q.add(totalPay);
->>>>>>> c30c2beed0ba43e1643ad8bf16ac819256e43714
 			}
 			max = Math.max(max, totalPay);//최대 누적급여 갱신
 		}
