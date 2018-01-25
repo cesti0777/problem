@@ -48,7 +48,6 @@ public class P14501 {
 				q.add(day[i][0]);
 				q.add(day[i][1]);
 				q.add(totalPay);
-
 			}
 			max = Math.max(max, totalPay);//최대 누적급여 갱신
 		}
