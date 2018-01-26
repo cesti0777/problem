@@ -58,7 +58,7 @@ public class SE1860 {
 					answer = "Impossible";
 					return;
 				}
-				continue;//붕어빵을 생성하면 안되므로 다음 반복문으로 넘어감
+				continue;
 			}
 			
 			//붕어빵 생성
@@ -79,6 +79,6 @@ public class SE1860 {
 			}
 			curSec++;//초증가
 		}
-		answer = "Possible";//모든 사람 붕어빵 지급하면 도달
+		answer = "Possible";//모든사람 붕어빵 지급하면 도달
 	}
 }
