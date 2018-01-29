@@ -23,7 +23,6 @@ public class SE1954 {
 
 			execute();// ½ÇÇà
 
-			System.out.println("#" + testCase);
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
 					System.out.print(arr[i][j] + " ");

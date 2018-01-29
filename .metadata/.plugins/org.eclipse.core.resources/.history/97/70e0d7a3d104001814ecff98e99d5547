@@ -21,9 +21,9 @@ public class SE1954 {
 
 			arr = new int[n][n];
 
+			arr[0][0] = 1;//첫칸 초기화
 			execute();// 실행
 
-			System.out.println("#" + testCase);
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
 					System.out.print(arr[i][j] + " ");
@@ -34,7 +34,6 @@ public class SE1954 {
 	}
 
 	public static void execute() {
-		arr[0][0] = 1;//첫칸 초기화
 		int r = 0, c = 0;
 		char d = 'R';
 		int num = 1;

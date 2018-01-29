@@ -1,0 +1,47 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE1491 {
+
+	static int testCaseCnt;// testcase 개수
+	static int n, a, b;
+	static int answer;
+
+	public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();// testcase 개수 입력
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+
+			n = in.nextInt();
+			a = in.nextInt();
+			b = in.nextInt();
+
+			execute();// 실행
+
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void execute() {
+		int rootN = (int)Math.sqrt(n);
+		int result = 0;
+		int max = Math.max(a, b);
+		
+		for(int r = rootN ; r <= max; r++){
+			for(int c = rootN ; c >= 1; c--){
+				if(r * c <= n){
+					result = a * Math.abs(r - c) + b * (n - r * c);
+					answer = Math.min(answer, result);
+				}
+			}
+		}
+		
+		result = a * Math.abs(r - c) + b * (n - r * c);
+		answer = result;
+	}
+
+}
