@@ -19,8 +19,6 @@ public class SE2817 {
 			
 			n = in.nextInt();
 			k = in.nextInt();
-			
-			//수열입력
 			for(int i = 0; i < n; i++){
 				nums[i] = in.nextInt();
 			}
@@ -35,46 +33,41 @@ public class SE2817 {
 
 	public static void execute() {
 
-		//nCr개의 조합을 표현할 배열, 빈 배열에 앞쪽부터 채우면서 조합생성
-		//각 조합이 포함한 번호는 map배열의 인덱스로 쓰임
-		int[] comArr = new int[n];
+		int[] idxArr = new int[n];
 		
-		//nC1 ~ nCr 까지의 조합 계산
-		//ex)4C3 -> 4C1, 4C2, 4C3
-		for(int r= 1; r <= n; r++){
-			combination(comArr, 0, n, r, 0);
+		for(int i = 1; i <= n; i++){
+			combination(idxArr, 0, n, i, 0);	
 		}
 	}
 	
-	public static void combination(int[] comArr, int idx, int n, int r, int targetNum){
+	public static void combination(int[] idxArr, int idx, int n, int r, int targetIdx){
 		
-		if(r == 0){//모든 수를 다 뽑았으면
+		if(r == 0){
 //			print(idxArr, idx);
-			cal(comArr, idx);//계산
-		}else if(n == targetNum){//사용할 수가 바닥난 상태
+			cal(idxArr, idx);
+		}else if(n == targetIdx){
 			return;
 		}else{
-			comArr[idx] = targetNum;
-			combination(comArr, idx + 1, n, r - 1, targetNum + 1);
-			combination(comArr, idx, n, r, targetNum + 1);
+			idxArr[idx] = targetIdx;
+			combination(idxArr, idx + 1, n, r - 1, targetIdx + 1);
+			combination(idxArr, idx, n, r, targetIdx + 1);
 		}
 	}
 	
-	public static void cal(int[] comArr, int idx){
+	public static void cal(int[] idxArr, int idx){
 		
 		int sum = 0;
 		for(int i = 0; i < idx; i++){
-			sum += nums[comArr[i]];
+			sum += nums[idxArr[i]];
 		}
 		if(sum == k){
 			answer++;
 		}
 	}
-	
-	public static void print(int[] comArr, int idx){
+	public static void print(int[] idxArr, int idx){
 		
 		for(int i = 0; i < idx; i++){
-			System.out.print(nums[comArr[i]] + " ");
+			System.out.print(nums[idxArr[i]] + " ");
 		}
 		System.out.println();
 	}
