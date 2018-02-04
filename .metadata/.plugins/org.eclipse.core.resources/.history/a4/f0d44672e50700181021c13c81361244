@@ -2,11 +2,11 @@ package study;
 
 import java.util.Scanner;
 
-public class SE2817 {
+public class SE2806 {
 
 	static int testCaseCnt;//testcase 개수
-	static int n, k;
-	static int nums[] = new int[20];
+	static int n;
+	static int[][] map;
 	static int answer;
 
 	public static void main(String[] args) {
@@ -18,12 +18,8 @@ public class SE2817 {
 		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
 			
 			n = in.nextInt();
-			k = in.nextInt();
 			
-			//수열입력
-			for(int i = 0; i < n; i++){
-				nums[i] = in.nextInt();
-			}
+			map = new int[][];
 			
 			answer = 0;
 			
@@ -37,13 +33,11 @@ public class SE2817 {
 
 		//nCr개의 조합을 표현할 배열, 빈 배열에 앞쪽부터 채우면서 조합생성
 		//각 조합이 포함한 번호는 map배열의 인덱스로 쓰임
-		int[] comArr = new int[n];
+		int[] comArr = new int[n * n];
 		
 		//nC1 ~ nCr 까지의 조합 계산
 		//ex)4C3 -> 4C1, 4C2, 4C3
-		for(int r= 1; r <= n; r++){
-			combination(comArr, 0, n, r, 0);
-		}
+		combination(comArr, 0, n * n, n, 0);
 	}
 	
 	public static void combination(int[] comArr, int idx, int n, int r, int targetNum){
