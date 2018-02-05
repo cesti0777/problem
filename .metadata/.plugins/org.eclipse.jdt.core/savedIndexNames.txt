@@ -1,4 +1,4 @@
-INDEX VERSION 1.130+D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.jdt.core
+INDEX VERSION 1.130+D:\0.swStudy\problem\.metadata\.plugins\org.eclipse.jdt.core
 3606533314.index
 2033839043.index
 1312586118.index
@@ -8,7 +8,6 @@ INDEX VERSION 1.130+D:\0.swStudy\Problem\.metadata\.plugins\org.eclipse.jdt.core
 2672315831.index
 2451833951.index
 4266428024.index
-3801945034.index
 1921432459.index
 2546076573.index
 3188099249.index
