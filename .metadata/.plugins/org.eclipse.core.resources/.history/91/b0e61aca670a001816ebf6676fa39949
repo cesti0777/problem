@@ -1,0 +1,108 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE2806 {
+
+	static int testCaseCnt;// testcase 개수
+	static int n;
+	static int answer;
+	static int[][] map;
+
+	public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();// testcase 개수 입력
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+
+			n = in.nextInt();
+
+			answer = 0;
+
+			execute();// 실행
+
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void execute() {
+
+		for(int i = 0; i < n; i++){
+			buildQeen(0, i);
+		}
+		
+		
+	}
+	
+	public static void buildQeen(int r, int c) {
+		
+		if(r > n){
+			return;
+		}else if(r == 0){
+			fillPath(r, c);
+			buildQeen(r + 1, c);
+		}else{
+			for(int i = 0; i < n; i++){
+				if(map[r][i] == 0){
+					fillPath(r, i);
+					buildQeen(c, r + 1);
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	public static void fillPath(int r, int c) {
+		for(int i = 0; i < n; i++){
+			map[r][i] = 1;
+			map[i][c] = 1;
+		}
+		int a = r - 1;
+		int b = c - 1;
+		while (a >= 0 && b >= 0) {//좌상
+			map[a][b] = 1;
+			a--;
+			b--;
+		}
+		a = r + 1;
+		b = c + 1;
+		while (a < n && b < n) {//우하
+			map[a][b] = 1;
+			a++;
+			b++;
+		}
+
+		a = r - 1;
+		b = c + 1;
+		while (a >= 0 && b < n) {//우상
+			map[a][b] = 1;
+			a--;
+			b++;
+		}
+		a = r + 1;
+		b = c - 1;
+		while (a < n && b >= 0) {//좌하
+			map[a][b] = 1;
+			a++;
+			b--;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+}
