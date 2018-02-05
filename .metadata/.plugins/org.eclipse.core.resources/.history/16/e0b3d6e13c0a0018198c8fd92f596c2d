@@ -49,7 +49,7 @@ public class P14499 {
 			 * 		D -> D
 			 * 		L -> T
 			 * 		R -> B
-			 */ 
+			 */
 			if(order[i] == 1){//¿ì(µ¿)
 				if(c + 1 < m){
 					c++;
