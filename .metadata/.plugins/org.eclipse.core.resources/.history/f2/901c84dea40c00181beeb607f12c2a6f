@@ -1,0 +1,104 @@
+package study;
+
+import java.util.Scanner;
+
+public class BJ14889 {
+
+	static int n;
+	static int[][] map;
+	static int answer;
+
+	public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+
+		n = in.nextInt();
+		
+		map = new int[n][n];
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				map[i][j] = in.nextInt();
+			}
+		}
+
+		answer = 0;
+		
+		execute();// 실행
+
+		System.out.println(answer);
+	}
+
+	public static void execute() {
+
+		int[] comArr = new int[n];
+
+		combination(comArr, 0, n, n / 2, 0);
+	}
+
+	public static void combination(int[] comArr, int idx, int n, int r, int targetNum) {
+
+		if (r == 0) {// 모든 수를 다 뽑았으면
+			answer++;
+			cal(comArr, idx);
+			print(comArr, idx);
+		} else if (n == targetNum) {// 사용할 수가 바닥난 상태
+			return;
+		} else {
+			comArr[idx] = targetNum;
+			combination(comArr, idx + 1, n, r - 1, targetNum + 1);
+			if(idx != 0){
+				combination(comArr, idx, n, r, targetNum + 1);
+			}
+		}
+	}
+	
+	public static void cal(int[] a, int idx) {
+
+		int resultA = 0;
+		int resultB = 0;
+		int[] b = new int[idx];
+		boolean[] check = new boolean[n];
+		
+		
+		
+		for (int i = 0; i < idx; i++) {
+			check[a[i]] = true;
+		}
+		
+		int bIdx = 0;
+		for (int i = 0; i < n; i++) {
+			if(check[i] == false){
+				b[bIdx] = i;
+				bIdx++;
+			}
+		}
+		
+		for(int i = 0; i < idx - 1; i++){
+			for(int j = i + 1; j < idx; j++){
+				resultA += map[a[i]][a[j]] + map[a[j]][a[i]];
+				resultB += map[b[i]][b[j]] + map[b[j]][b[i]];
+			}
+		}
+		
+		answer = Math.min(answer, Math.abs(resultA - resultB))
+		System.out.println();
+	}
+
+	public static void print(int[] a, int idx) {
+
+		boolean[] check = new boolean[n];
+		
+		System.out.print("A : ");
+		for (int i = 0; i < idx; i++) {
+			System.out.print(a[i] + " ");
+			check[a[i]] = true;
+		}
+		System.out.print("B : ");
+		for (int i = 0; i < n; i++) {
+			if(check[i] == false){
+				System.out.print(i + " ");
+			}
+		}
+		System.out.println();
+	}
+}
