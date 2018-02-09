@@ -1,0 +1,42 @@
+package study;
+
+import java.util.Scanner;
+
+public class BJ14889 {
+
+	static int n;
+	static int answer;
+
+	public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+
+		n = in.nextInt();
+
+		answer = 0;
+		execute();// 실행
+
+		System.out.println(answer);
+	}
+
+	public static void execute() {
+
+		int[] comArr = new int[n];
+
+		combination(comArr, 0, n, n / 2, 0);
+	}
+
+	public static void combination(int[] comArr, int idx, int n, int r, int targetNum) {
+
+		if (r == 0) {// 모든 수를 다 뽑았으면
+			answer++;
+			// print(comArr, idx);
+		} else if (n == targetNum) {// 사용할 수가 바닥난 상태
+			return;
+		} else {
+			comArr[idx] = targetNum;
+			combination(comArr, idx + 1, n, r - 1, targetNum + 1);
+			combination(comArr, idx, n, r, targetNum + 1);
+		}
+	}
+}
