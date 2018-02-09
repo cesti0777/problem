@@ -46,7 +46,7 @@ public class SE2806_New {
 			for(int i = 0; i < n; i++){
 				if(map[r][i] == 0){
 					fillOrBack(r, i, fill);
-					printMap(map);
+//					printMap(map);
 					buildQeen(r + 1);
 					fillOrBack(r, i, back);
 				}
