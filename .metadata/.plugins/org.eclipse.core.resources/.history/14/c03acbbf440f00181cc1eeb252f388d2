@@ -1,0 +1,37 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE1493 {
+
+	static int n;
+	static int[][] map = new int[10001][10001];
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		int rS = 0;
+		int cS = 0;
+		int rD = 1;
+		int cD = 1;
+		for(int i = 1; i <= 10000; i++){
+			rS += rD;
+			cS = rS;
+			cD = rD;
+			for(int j = 1; j <= 10000; j++){
+				map[i][j] = cS;
+				cS += cD;
+				cD++;
+			}
+			cD = 0;
+			rD++;
+		}
+		
+		for(int i = 0; i <= 4; i++){
+			for(int j = 0; j <= 4; j++){
+				System.out.print(map[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+}

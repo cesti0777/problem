@@ -1,0 +1,159 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE2105 {
+
+	static int testCaseCnt;//testcase 개수
+	static int n;
+	static int[][] map;
+	static boolean[][] visited;
+	static boolean[] visitedType;
+	static int answer;
+	static boolean[] usedD = new boolean[4];
+	static int sR, sC;
+	
+	final static int NE = 1;
+	final static int SE = 2;
+	final static int SW = 3;
+	final static int NW = 4;
+	final static int NOTURN = 10;
+	final static int RIGHT = 11;
+	final static int LEFT = 12;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();//testcase 개수 입력
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+			
+			n = in.nextInt();
+			
+			map = new int[n][n];
+			visited = new boolean[n][n];
+			visitedType = new boolean[101];
+			
+			for(int i = 0; i < n; i++){
+				for(int j = 0; j < n; j++){
+					map[i][j] = in.nextInt();
+				}
+			}
+			
+			answer = 0;
+			
+			execute();//실행
+			
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void execute() {
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				sR = i;
+				sC = j;
+				search(sR, sC, 0, 0, NOTURN, 0);
+			}
+		}
+		
+		if(answer == 0){
+			answer = -1;
+		}
+	}
+	
+	public static void search(int r, int c, int fromD, int cnt, int turn, int trunCnt) {
+
+		if(r < 0 || c < 0 || r >= n || c >= n){
+			return;
+		}else if(trunCnt > 4){
+			return;
+		}else if(turn != NOTURN && sR == r && sC == c){
+			answer = Math.max(answer, cnt);
+			System.out.println(cnt);
+			if(cnt == 10){
+				System.out.println(sR + " " + sC);
+				System.out.println(r + " " + c);
+				System.out.println(fromD);
+				System.out.println(turn);
+				print();
+			}
+			return;
+		}else if(visited[r][c] == false){
+			if(visitedType[map[r][c]] == true){
+				return;
+			}
+			
+			visited[r][c] = true;
+			visitedType[map[r][c]] = true;
+			
+//			System.out.println();
+//			print();
+			
+			if(cnt == 0){
+				search(r - 1, c + 1, NE, cnt + 1, NOTURN, trunCnt);
+				search(r + 1, c + 1, SE, cnt + 1, NOTURN, trunCnt);
+				search(r + 1, c - 1, SW, cnt + 1, NOTURN, trunCnt);
+				search(r - 1, c - 1, NW, cnt + 1, NOTURN, trunCnt);
+			}else if(turn == NOTURN){
+				if(fromD == NE){
+					search(r - 1, c + 1, NE, cnt + 1, NOTURN, trunCnt);
+					search(r + 1, c + 1, SE, cnt + 1, RIGHT, trunCnt);
+					search(r - 1, c - 1, NW, cnt + 1, LEFT, trunCnt);
+				}else if(fromD == SE){
+					search(r + 1, c + 1, SE, cnt + 1, NOTURN, trunCnt);
+					search(r + 1, c - 1, SW, cnt + 1, RIGHT, trunCnt);
+					search(r - 1, c + 1, NE, cnt + 1, LEFT, trunCnt);
+				}else if(fromD == SW){
+					search(r + 1, c - 1, SW, cnt + 1, NOTURN, trunCnt);
+					search(r - 1, c - 1, NW, cnt + 1, RIGHT, trunCnt);
+					search(r + 1, c + 1, SE, cnt + 1, LEFT, trunCnt);
+				}else if(fromD == NW){
+					search(r - 1, c - 1, NW, cnt + 1, NOTURN, trunCnt);
+					search(r - 1, c + 1, NE, cnt + 1, RIGHT, trunCnt);
+					search(r + 1, c - 1, SW, cnt + 1, LEFT, trunCnt);
+				}
+			}else if(turn == RIGHT){
+				if(fromD == NE){
+					search(r - 1, c + 1, NE, cnt + 1, turn, trunCnt);
+					search(r + 1, c + 1, SE, cnt + 1, turn, trunCnt + 1);
+				}else if(fromD == SE){
+					search(r + 1, c + 1, SE, cnt + 1, turn, trunCnt);
+					search(r + 1, c - 1, SW, cnt + 1, turn, trunCnt + 1);
+				}else if(fromD == SW){
+					search(r + 1, c - 1, SW, cnt + 1, turn, trunCnt);
+					search(r - 1, c - 1, NW, cnt + 1, turn, trunCnt + 1);
+				}else if(fromD == NW){
+					search(r - 1, c - 1, NW, cnt + 1, turn, trunCnt);
+					search(r - 1, c + 1, NE, cnt + 1, turn, trunCnt + 1);
+				}
+			}else if(turn == LEFT){
+				if(fromD == NE){
+					search(r - 1, c + 1, NE, cnt + 1, turn, trunCnt);
+					search(r - 1, c - 1, NW, cnt + 1, turn, trunCnt + 1);
+				}else if(fromD == SE){
+					search(r + 1, c + 1, SE, cnt + 1, turn, trunCnt);
+					search(r - 1, c + 1, NE, cnt + 1, turn, trunCnt + 1);
+				}else if(fromD == SW){
+					search(r + 1, c - 1, SW, cnt + 1, turn, trunCnt);
+					search(r + 1, c + 1, SE, cnt + 1, turn, trunCnt + 1);
+				}else if(fromD == NW){
+					search(r - 1, c - 1, NW, cnt + 1, turn, trunCnt);
+					search(r + 1, c - 1, SW, cnt + 1, turn, trunCnt + 1);
+				}
+			}
+			visited[r][c] = false;
+			visitedType[map[r][c]] = false;
+		}
+		
+	}
+	public static void print() {
+
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				System.out.print(visited[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+}
