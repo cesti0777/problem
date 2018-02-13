@@ -39,21 +39,22 @@ public class BJ14890 {
 			for (int j = 0; j < n; j++) {
 				if (j + 1 < n) {
 					if (map[i][j] - 1 == map[i][j + 1]) {//내리막필요
-						for(int a = 1; a <= l; a++){//l칸 검사
+						for(int a = 1; a <= l; a++){//앞으로 l칸 검사
 							if(j + a >= n || visited[j + a] || map[i][j + a] != map[i][j] - 1){
+								//맵밖체크, 경사로체크, 평지체크
 								fail = true;
 								break;
 							}
-							visited[j + a] = true;
+							visited[j + a] = true;//경사로 체크
 						}
-						j += l - 1;
+						j += l - 1;//세운 경사로 만큼 점프
 					}else if(map[i][j] + 1 == map[i][j + 1]){//오르막필요
-						for(int a = 0; a < l; a++){//l칸 검사
+						for(int a = 0; a < l; a++){//뒤로 l칸 검사
 							if(j - a < 0 || visited[j - a] || map[i][j - a] != map[i][j]){
 								fail = true;
 								break;
 							}
-							visited[j - a] = true;
+							visited[j - a] = true;//경사로 체크
 						}
 					}else if(map[i][j] != map[i][j + 1]){
 						fail = true;

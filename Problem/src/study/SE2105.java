@@ -79,25 +79,25 @@ public class SE2105 {
 			visited[r][c] = true;// 방문한 카페로 체크
 			visitedType[map[r][c]] = true;// 먹은 디저트로 체크
 
-			if (cnt == 0) {// 출발전
+			if (cnt == 0) {// 출발전, 턴x, 턴 횟수 증가 x
 				search(r - 1, c + 1, NE, cnt + 1, NOTURN, turnCnt);
 				search(r + 1, c + 1, SE, cnt + 1, NOTURN, turnCnt);
 				search(r + 1, c - 1, SW, cnt + 1, NOTURN, turnCnt);
 				search(r - 1, c - 1, NW, cnt + 1, NOTURN, turnCnt);
 			} else if (turn == NOTURN) {// 출발 후 ~ 턴하기 전, (반)시계방향 순회 결정
-				if (fromD == NE) {
-					search(r - 1, c + 1, NE, cnt + 1, NOTURN, turnCnt);
-					search(r + 1, c + 1, SE, cnt + 1, RIGHT, turnCnt + 1);
-					search(r - 1, c - 1, NW, cnt + 1, LEFT, turnCnt + 1);
-				} else if (fromD == SE) {
+				if (fromD == NE) {//북동
+					search(r - 1, c + 1, NE, cnt + 1, NOTURN, turnCnt);//직진
+					search(r + 1, c + 1, SE, cnt + 1, RIGHT, turnCnt + 1);//시계방향 턴
+					search(r - 1, c - 1, NW, cnt + 1, LEFT, turnCnt + 1);//반시계방향 턴
+				} else if (fromD == SE) {//남동
 					search(r + 1, c + 1, SE, cnt + 1, NOTURN, turnCnt);
 					search(r + 1, c - 1, SW, cnt + 1, RIGHT, turnCnt + 1);
 					search(r - 1, c + 1, NE, cnt + 1, LEFT, turnCnt + 1);
-				} else if (fromD == SW) {
+				} else if (fromD == SW) {//남서
 					search(r + 1, c - 1, SW, cnt + 1, NOTURN, turnCnt);
 					search(r - 1, c - 1, NW, cnt + 1, RIGHT, turnCnt + 1);
 					search(r + 1, c + 1, SE, cnt + 1, LEFT, turnCnt + 1);
-				} else if (fromD == NW) {
+				} else if (fromD == NW) {//북서
 					search(r - 1, c - 1, NW, cnt + 1, NOTURN, turnCnt);
 					search(r - 1, c + 1, NE, cnt + 1, RIGHT, turnCnt + 1);
 					search(r + 1, c - 1, SW, cnt + 1, LEFT, turnCnt + 1);
