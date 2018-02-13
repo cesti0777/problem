@@ -1,0 +1,45 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE1221 {
+
+	static int testCaseCnt;//testcase 개수
+	static String num;
+	static int len;
+	static int answer;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();//testcase 개수 입력
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+			
+			in.nextLine();
+			num = in.nextLine();
+			
+			int a = (testCase + " ").length() + 1;
+			int b = num.length() - 1;
+			
+			System.out.println(a);
+			System.out.println(b);
+			
+//			len = num.substring(((testCase + " ").length() + 2), num.length() - 1).length();
+//			
+//			
+//			
+//			System.out.println(num);
+//			System.out.println(len);
+			
+			execute();//실행
+			
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void execute() {
+		
+	}
+
+}
