@@ -1,0 +1,48 @@
+package study;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+ 
+public class SE1952 {
+ 
+	static int T;
+    static int[] day;
+    static int[] pay;
+    static int min;
+    static int cnt;
+    public static void main(String[] args) {
+         
+        Scanner sc = new Scanner(System.in);
+         
+        T = sc.nextInt();
+        for(int i=1;i<=T;i++){
+            day = new int[12];
+            pay = new int[4];
+            min = Integer.MAX_VALUE;
+             
+            for(int j=0;j<4;j++){
+                pay[j] = sc.nextInt();
+            }
+            for(int j=0;j<12;j++){
+                day[j] = sc.nextInt();
+            }
+            dfs(0,0);
+             
+            System.out.println("#"+i+" "+min);
+            System.out.println(cnt);
+        }
+        
+ 
+    }
+    public static void dfs(int month, int money){
+    	cnt++;
+        if(month>=12){
+            min = Math.min(min, money);
+            return;
+        }
+        dfs(month+1,money+pay[0]*day[month]); //1일
+        dfs(month+1,money+pay[1]);//한달
+        dfs(month+3,money+pay[2]);//3달
+        dfs(month+12,money+pay[3]);//1년
+    }
+}

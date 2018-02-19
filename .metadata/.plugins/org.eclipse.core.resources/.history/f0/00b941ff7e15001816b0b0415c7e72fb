@@ -1,0 +1,63 @@
+package study;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+ 
+public class SE1952 {
+ 
+    static int testCaseCnt;
+    static int[] costs;
+    static ArrayList<Integer> month;
+    static int[] plan;
+    static int answer;
+ 
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+ 
+        testCaseCnt = in.nextInt();
+ 
+        for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+ 
+            costs = new int[4];
+            for (int j = 0; j < 4; j++) {
+                costs[j] = in.nextInt();
+            }
+ 
+            month = new ArrayList<>();
+            for (int j = 0; j < 12; j++) {
+                month.add(in.nextInt());
+            }
+ 
+            while (month.get(0) == 0) {
+                month.remove(0);
+            }
+            
+            while (month.get(month.size() - 1) == 0) {
+                month.remove(month.size() - 1);
+            }
+ 
+            plan = new int[month.size()];
+            for (int j = 0; j < month.size(); j++) {
+            	plan[j] = month.get(j);
+            }
+            
+            answer = costs[3];
+            execute(0, 0);
+            System.out.println("#" + testCase + " " + answer);
+        }
+    }
+ 
+    public static void execute(int day, int totalCost) {
+    	
+        if(day >= plan.length){
+            answer = Math.min(answer, totalCost);
+            return;
+        }
+         
+        execute(day + 1, totalCost + plan[day] * costs[0]);
+         
+        execute(day + 1, totalCost + costs[1]);
+         
+        execute(day + 3, totalCost + costs[2]);
+    }
+}
