@@ -8,14 +8,6 @@ public class BJ12100_New_Today {
 	static int answer;
 	static int n;
 	static int map[][];
-	
-	static int curR;
-	static int curC;
-	static int[][] curMap;
-	static int totalCnt;
-	static int[][] cloneMap;
-	static int full;
-	static int tmp;
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -35,17 +27,16 @@ public class BJ12100_New_Today {
 	}
 
 	public static void execute() {
-
-		int[][] curMap = null;
-		int totalCnt = 0;
-		int[][] cloneMap;
-		int full;
-		int tmp;
+		int curR;
+		int curC;
 
 		Queue<Object> q = new LinkedList<Object>();//bfs 큐
 		q.add(map);
 		q.add(0);
 		
+		int[][] curMap = null;
+		int totalCnt = 0;
+		int[][] cloneMap;
 		while (!q.isEmpty()) {
 			curMap = (int[][]) q.remove();
 			totalCnt = (int) q.remove();
@@ -88,8 +79,8 @@ public class BJ12100_New_Today {
 				}
 				
 				// 밀기
-				full = 0;// 현재 빈 인덱스
-				tmp = 0;
+				int full = 0;// 현재 빈 인덱스
+				int tmp = 0;
 				for (int i = 0; i < n; i++) {// 행 순회
 					if (cloneMap[i][j] != 0) {// 수 발견
 						tmp = cloneMap[i][j];
@@ -127,8 +118,8 @@ public class BJ12100_New_Today {
 					}
 				}
 				// 밀기
-				full = n - 1;// 현재 빈 인덱스
-				tmp = 0;
+				int full = n - 1;// 현재 빈 인덱스
+				int tmp = 0;
 				for (int i = n - 1; i >= 0; i--) {// 행 순회
 					if (cloneMap[i][j] != 0) {// 수 발견
 						tmp = cloneMap[i][j];
@@ -166,8 +157,8 @@ public class BJ12100_New_Today {
 					}
 				}
 				// 밀기
-				full = 0;// 현재 빈 인덱스
-				tmp = 0;
+				int full = 0;// 현재 빈 인덱스
+				int tmp = 0;
 				for (int j = 0; j < n; j++) {// 열 순회
 					if (cloneMap[i][j] != 0) {// 수 발견
 						tmp = cloneMap[i][j];
@@ -205,8 +196,8 @@ public class BJ12100_New_Today {
 					}
 				}
 				// 밀기
-				full = n - 1;// 현재 빈 인덱스
-				tmp = 0;
+				int full = n - 1;// 현재 빈 인덱스
+				int tmp = 0;
 				for (int j = n - 1; j >= 0; j--) {// 열 순회
 					if (cloneMap[i][j] != 0) {// 수 발견
 						tmp = cloneMap[i][j];
