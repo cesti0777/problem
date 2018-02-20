@@ -1,0 +1,91 @@
+package study;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SE1289 {
+
+	static int testCaseCnt;//testcase 개수
+	static String[] nums;
+	static String[] resultNum;
+	static int answer;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();//testcase 개수 입력
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+			
+			nums = in.next().split("");
+			
+			resultNum = new String[nums.length];
+			
+			for(int i = 0; i < resultNum.length; i++){
+				resultNum[i] = "0";
+			}
+			
+			answer = 0;
+			
+			execute();//실행
+			
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void execute() {
+		boolean isChange = true;
+		
+		for(int i = 0; i < nums.length; i++){
+			if(nums[i].equals("0")){
+				continue;
+			}
+			for(int j = i; j < nums.length; j++){
+				if(isChange == true){
+					if(nums[j].equals("1")){
+						for(int k = j; k < nums.length; k++){
+							resultNum[k] = "1";
+						}
+						answer++;
+						for(int k = j + 1; k < nums.length; k++){
+							if(nums[k].equals("0")){
+								continue;
+							}
+							isChange = false;
+							break;
+						}
+					}else{
+						for(int k = j; k < nums.length; k++){
+							resultNum[k] = "0";
+						}
+						answer++;
+						for(int k = j; k < nums.length; k++){
+							if(nums[k].equals("1")){
+								continue;
+							}
+							isChange = false;
+							break;
+						}
+					}
+				}else{
+					return;
+				}
+			}
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
