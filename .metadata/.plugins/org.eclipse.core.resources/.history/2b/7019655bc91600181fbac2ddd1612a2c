@@ -1,0 +1,78 @@
+package study;
+
+import java.util.Scanner;
+
+public class SE1953_Today {
+
+	static int testCaseCnt;// testcase 개수
+	static int n, m, r, c, l;
+	static int[][] map;
+	static int answer;
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		testCaseCnt = in.nextInt();// testcase 개수 입력
+
+		for (int testCase = 1; testCase <= testCaseCnt; testCase++) {
+
+			n = in.nextInt();
+			m = in.nextInt();
+			r = in.nextInt();
+			c = in.nextInt();
+			l = in.nextInt();
+
+			map = new int[n][m];
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < m; j++) {
+					map[i][j] = in.nextInt();
+				}
+			}
+
+			answer = 0;
+
+			execute(r, c, 1);// 실행
+
+			System.out.println("#" + testCase + " " + answer);
+		}
+	}
+
+	public static void execute(int r, int c, int h) {
+		if (h > l) {// 탈출 조건
+			return;
+		}
+
+		int curPipe = map[r][c];// 현재 위치 파이프 종류 저장
+		map[r][c] = 0;// 현재 위치 방문 체크
+		answer++;
+
+		if (r - 1 >= 0 && map[r - 1][c] != 0 
+				&& (curPipe == 1 || curPipe == 2 || curPipe == 4 || curPipe == 7)) {// 상
+			execute(r - 1, c, h + 1);
+		} else if (r + 1 < n && map[r + 1][c] != 0 
+				&& (curPipe == 1 || curPipe == 2 || curPipe == 5 || curPipe == 6)) {// 하
+			execute(r + 1, c, h + 1);
+		} else if (c - 1 >= 0 && map[r][c - 1] != 0 
+				&& (curPipe == 1 || curPipe == 3 || curPipe == 6 || curPipe == 7)) {// 좌
+			execute(r, c - 1, h + 1);
+		} else if (c + 1 < n && map[r - 1][c + 1] != 0
+				&& (curPipe == 1 || curPipe == 3 || curPipe == 4 || curPipe == 5)) {// 우
+			execute(r, c + 1, h + 1);
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

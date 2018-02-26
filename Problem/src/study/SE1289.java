@@ -7,7 +7,7 @@ public class SE1289 {
 
 	static int testCaseCnt;// testcase 개수
 	static String[] nums;
-	static String[] resultNum;
+	static String[] makeNum;
 	static int answer;
 
 	public static void main(String[] args) {
@@ -19,12 +19,12 @@ public class SE1289 {
 
 			nums = in.next().split("");
 
-			resultNum = new String[nums.length];
-
-			for (int i = 0; i < resultNum.length; i++) {
-				resultNum[i] = "0";
+			makeNum = new String[nums.length];
+			
+			for(int i = 0; i < makeNum.length; i++){
+				makeNum[i] = "0";
 			}
-
+			
 			answer = 0;
 
 			execute();// 실행
@@ -34,48 +34,16 @@ public class SE1289 {
 	}
 
 	public static void execute() {
-
-		for (int i = 0; i < nums.length; i++) {
-			if (nums[i].equals("0")) {
+		for(int i = 0; i < makeNum.length; i++){
+			if(nums[i].equals(makeNum[i])){
 				continue;
 			}
-			boolean isChange = true;
-			String before = null;
-			for (int j = i; j < nums.length; j++) {
-				if (isChange == true) {
-					if(before == nums[j]){
-						continue;
-					}
-					if (nums[j].equals("1")) {
-						for (int k = j; k < nums.length; k++) {
-							resultNum[k] = "1";
-						}
-						before = "1";
-						answer++;
-						for (int k = j + 1; k < nums.length; k++) {
-							if (nums[k].equals("1")) {
-								continue;
-							}
-							isChange = false;
-							break;
-						}
-					} else {
-						for (int k = j; k < nums.length; k++) {
-							resultNum[k] = "0";
-						}
-						before = "0";
-						answer++;
-						for (int k = j; k < nums.length; k++) {
-							if (nums[k].equals("0")) {
-								continue;
-							}
-							isChange = false;
-							break;
-						}
-					}
-				}
+			
+			answer++;
+			
+			for(int j = i; j < makeNum.length; j++){
+				makeNum[j] = nums[i];
 			}
 		}
 	}
-
 }
