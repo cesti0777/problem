@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;s&apos; in &apos;kj_ss.p14889&apos; to &apos;all&apos;&#x0D;&#x0A;- Original project: &apos;Problem&apos;&#x0D;&#x0A;- Original element: &apos;kj_ss.p14889.s&apos;&#x0D;&#x0A;- Renamed element: &apos;kj_ss.p14889.all&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;s&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;kj_ss{p14889.java[p14889^s" name="all" references="true" setter="false" stamp="1523188269508" textual="false" version="1.0"/>
+</session>

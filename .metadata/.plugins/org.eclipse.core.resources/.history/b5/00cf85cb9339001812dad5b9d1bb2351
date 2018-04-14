@@ -1,0 +1,43 @@
+package kj_ss;
+
+import java.util.Scanner;
+
+public class s2817 {
+	static int n;
+	static int k;
+	static int t;
+	static int[] arr;
+	static int count;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		t = sc.nextInt();
+		for(int i=0; i<t; i++) {
+			n = sc.nextInt();
+			k = sc.nextInt();
+			arr = new int[n];
+			for(int j=0; j<n; j++) {
+				arr[j] = sc.nextInt();
+			}
+			for(int k=0; k<n; k++) {
+				run(k,n,arr[k]);
+				System.out.println("==="+k+"===");
+			}
+		} 
+		System.out.println(count);
+	}
+	
+	public static void run(int start, int end, int sum) {
+		if(sum == k) {
+			count++;
+			return;
+		}
+		if(start+1 == end) {
+			return;
+		}
+		else {
+			run(start+1, end, sum+arr[start]);
+			System.out.println("start:"+start+"//"+ sum+arr[start]);
+		}
+	}
+
+}

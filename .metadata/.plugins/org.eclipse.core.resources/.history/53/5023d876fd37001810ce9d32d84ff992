@@ -1,0 +1,17 @@
+package kj_ss;
+
+import java.util.Scanner;
+
+public class p14888 {
+	static int n;
+	static int plus;
+	static int minus;
+	static int gop;
+	static int nanu;
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.println();
+		
+	}
+}

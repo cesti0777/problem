@@ -1,0 +1,25 @@
+package kj_ss;
+
+import java.util.Scanner;
+
+public class p14888 {
+	static int n;
+	static int plus;
+	static int minus;
+	static int gop;
+	static int nanu;
+	static int[] array = new int[12];
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		n = in.nextInt();
+		for (int i = 0; i < n; i++) {
+			array[i] = in.nextInt();
+		}
+		plus = in.nextInt();
+		minus = in.nextInt();
+		gop = in.nextInt();
+		nanu = in.nextInt();
+
+	}
+}

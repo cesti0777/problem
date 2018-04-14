@@ -44,13 +44,14 @@ public class SE2817 {
 		for(int r= 1; r <= n; r++){
 			combination(comArr, 0, n, r, 0);
 		}
+//		combination(comArr, 0, n, 1, 0);
 	}
 	
 	public static void combination(int[] comArr, int idx, int n, int r, int targetNum){
 		
 		if(r == 0){//모든 수를 다 뽑았으면
 			print(comArr, idx);
-			cal(comArr, idx);//계산
+//			cal(comArr, idx);//계산
 		}else if(n == targetNum){//사용할 수가 바닥난 상태
 			return;
 		}else{
@@ -74,7 +75,8 @@ public class SE2817 {
 	public static void print(int[] comArr, int idx){
 		
 		for(int i = 0; i < idx; i++){
-			System.out.print(nums[comArr[i]] + " ");
+//			System.out.print(nums[comArr[i]] + " ");
+			System.out.print(comArr[i] + " ");
 		}
 		System.out.println();
 	}

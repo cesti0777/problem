@@ -1,0 +1,23 @@
+package kj_ss;
+
+import java.util.Scanner;
+
+public class p14890 {
+	static int n;
+	static int l;
+	static int[][] map = new int[101][101];
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		n = sc.nextInt();
+		l = sc.nextInt();
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<n; j++) {
+				map[i][j] = sc.nextInt();
+			}
+		}
+		runHang();
+	}
+	public void runHang() {
+		
+	}
+}
